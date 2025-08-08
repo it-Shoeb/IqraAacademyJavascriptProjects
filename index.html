@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IQRA Academy - Javascript Projects</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/iqraacademy.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav-bar">
+        <div class="toggle-bar">
+          <button class="toggle-switch">Menu</button>
+        </div>
+
+        <ul class="nav-links hidden">
+          <li>
+            <a href="#OTPGeneration">OTP (One-Time Password) generation</a>
+          </li>
+          <li>
+            <a href="#customerCaptureWebpage">customer capture webpage</a>
+          </li>
+          <li>
+            <a href="#budgetmanagementsystem">budget management system</a>
+          </li>
+          <li><a href="#taskScheduler">Task Scheduler</a></li>
+          <li>
+            <a href="#webpageWithATableContainingData"
+              >web page with a table containing data</a
+            >
+          </li>
+          <li><a href="#manageEmployeeRecords">manage employee records</a></li>
+          <li>
+            <a href="#webpageThatDisplaysAListOfItems"
+              >web page that displays a list of items</a
+            >
+          </li>
+          <li>
+            <a href="#usersCanInputTheirExpenses"
+              >users can input their expenses</a
+            >
+          </li>
+          <li><a href="#registrationForm">registration form</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="OTPGeneration" class="OTPGeneration">
+        <div class="otp-form">
+          <div class="input-field">
+            <label for=""> OTP: </label>
+            <input
+              type="text"
+              name=""
+              id=""
+              class="otpInputField"
+              maxlength="4"
+            />
+          </div>
+          <div class="cta">
+            <button class="getOTP">Get OTP</button>
+            <button class="checkOTP">Check OTP</button>
+          </div>
+          <div class="timer-container">
+            <p class="timer hidden">00:00</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="customerCaptureWebpage" class="customerCaptureWebpage">
+        <div class="container">
+          <p class="customerCaptureWebpage-heading">Customer Form</p>
+          <form class="customerCaptureWebpage-form" action="">
+            <label for="">Name: </label>
+            <input
+              type="text"
+              placeholder="Please Enter Customer Name"
+              autofocus="true"
+              name="name"
+              id="customerCaptureWebpageName"
+            />
+            <label for="">Email: </label>
+            <input
+              type="text"
+              placeholder="Please Enter Customer Email"
+              name="email"
+              id="customerCaptureWebpageEmail"
+            />
+            <label for=""> Type: </label>
+            <select name="type" id="customerCaptureWebpageType">
+              <option value="">Customer Type</option>
+              <option value="newcustomer">New Customer</option>
+              <option value="exisitingcustomer">Exisiting Customer</option>
+            </select>
+            <label for="" class="amountLabel hidden">Amount: </label>
+            <input
+              class="hidden"
+              type="text"
+              placeholder="Please Enter Amount"
+              name="amount"
+              id="customerCaptureWebpageAmount"
+            />
+            <div class="customerCaptureWebpage-form-cta">
+              <input type="submit" value="Submit" />
+              <button>Clear</button>
+            </div>
+          </form>
+          <div class="customers">
+            <div class="newCustomer">
+              <p class="-heading">New Customer</p>
+              <table class="customerCaptureWebpage-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Add</th>
+                  </tr>
+                </thead>
+                <tbody id="customerCaptureWebpage-newCustomer">
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="existCustomer">
+              <p class="-heading">Exist Customer</p>
+              <table class="customerCaptureWebpage-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Amount</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody id="customerCaptureWebpage-existCustomer">
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="budgetmanagementsystem"
+        class="budgetmanagementsystem"
+      ></section>
+      <section id="taskScheduler" class="taskScheduler"></section>
+      <section
+        id="webpageWithATableContainingData"
+        class="webpageWithATableContainingData"
+      ></section>
+      <section
+        id="manageEmployeeRecords"
+        class="manageEmployeeRecords"
+      ></section>
+      <section
+        id="webpageThatDisplaysAListOfItems"
+        class="webpageThatDisplaysAListOfItems"
+      ></section>
+      <section
+        id="usersCanInputTheirExpenses"
+        class="usersCanInputTheirExpenses"
+      ></section>
+      <section id="registrationForm" class="registrationForm"></section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

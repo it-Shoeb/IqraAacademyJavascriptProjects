@@ -1,0 +1,392 @@
+/* Global CSS */
+
+body,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+header li {
+  list-style: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+  width: 0;
+}
+.disabled {
+  filter: brightness(50%);
+  cursor: default;
+}
+
+/* header */
+
+header {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 1rem;
+  z-index: 1;
+}
+
+nav {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.toggle-bar {
+  display: flex;
+  justify-content: start;
+}
+.toggle-switch {
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+
+.toggle-switch:hover,
+.toggle-switch:focus {
+  background: rgba(255, 255, 255, 1);
+  color: black;
+  transition: all 0.5s;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  outline: none;
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0;
+    width: 0;
+  }
+}
+
+/* OTP (One-Time Password) generation */
+section.OTPGeneration {
+  background: url("./assets/wallpaper-1.webp") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
+
+.otp-form {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.5rem);
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+  border-radius: 0.8rem;
+}
+
+.input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-field input {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  outline: none;
+  border-radius: 0.8rem;
+  border: none;
+}
+
+.cta button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.getOTP {
+  background-color: blue;
+}
+.checkOTP {
+  background-color: green;
+}
+
+.getOTP:hover {
+  background-color: rgb(0, 0, 155);
+}
+
+.checkOTP:hover {
+  background-color: rgb(0, 110, 0);
+}
+.getOTP:focus {
+  background-color: rgb(0, 0, 155);
+}
+
+.checkOTP:focus {
+  background-color: rgb(0, 110, 0);
+}
+
+.timer-container {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .otp-form {
+    width: 90%;
+  }
+}
+
+/* customer capture webpage */
+
+section.customerCaptureWebpage {
+  background: url("./assets/wallpaper-2.jpg") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+  font-family: "Courier New", Courier, monospace;
+  justify-content: end;
+  /* align-items: start; */
+}
+
+.customerCaptureWebpage-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.customerCaptureWebpage .container {
+  padding: 1rem;
+  /* background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.5rem); */
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: purple;
+  border-radius: 0.8rem;
+}
+
+.customerCaptureWebpage-form {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.customerCaptureWebpage-form select,
+.customerCaptureWebpage-form input {
+  padding: 0.5rem;
+  color: purple;
+  border-radius: 12px;
+  outline: 0;
+  border: solid 1px black;
+  width: 100%;
+}
+
+.customerCaptureWebpage-form-cta {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.customerCaptureWebpage-form input[type="submit"] {
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+}
+
+.customerCaptureWebpage-form-cta button,
+.customerCaptureWebpage-form-cta input {
+  padding: 0.5rem;
+  border-radius: 12px;
+  outline: 0;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.customerCaptureWebpage-form-cta button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.customerCaptureWebpage-form-cta input[type="submit"]:hover,
+.customerCaptureWebpage-form-cta input[type="submit"]:focus,
+.customerCaptureWebpage-form-cta button:hover,
+.customerCaptureWebpage-form-cta button:focus {
+  filter: brightness(90%);
+}
+
+.customers {
+  display: flex;
+  gap: 1rem;
+}
+
+.newCustomer-heading,
+.existCustomer-heading {
+  font-weight: bold;
+}
+
+.newCustomer,
+.existCustomer {
+  background-color: white;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 8px;
+  height: 35vh;
+  overflow: scroll;
+}
+
+.newCustomer::-webkit-scrollbar,
+.existCustomer::-webkit-scrollbar {
+  display: none;
+}
+
+.customerCaptureWebpage-table {
+  width: 100%;
+}
+
+.customerCaptureWebpage-table tr th {
+  text-align: left;
+}
+
+.customerCaptureWebpage-add,
+.customerCaptureWebpage-remove {
+  outline: 0;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  color: white;
+}
+.customerCaptureWebpage-add:hover,
+.customerCaptureWebpage-remove:hover,
+.customerCaptureWebpage-add:focus,
+.customerCaptureWebpage-remove:focus {
+    filter: brightness(80%);
+}
+.customerCaptureWebpage-add {
+  background-color: green;
+}
+
+.customerCaptureWebpage-remove {
+  background-color: red;
+}
+
+@media (max-width: 480px) {
+  .customerCaptureWebpage .container {
+    width: 100%;
+  }
+}
+
+/* budget management system */
+
+section.budgetmanagementsystem {
+  background: url("./assets/wallpaper-3.jpg") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
+
+/* Task Scheduler */
+
+section.taskScheduler {
+  background: url("./assets/wallpaper-5.jpg") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
+
+/* web page with a table containing data */
+
+section.webpageWithATableContainingData {
+  background: url("./assets/wallpaper-4.jpg") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
+
+/* manage employee records */
+
+section.manageEmployeeRecords {
+  background: url("./assets/wallpaper-6.jpg") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
+
+/* web page that displays a list of items */
+
+section.webpageThatDisplaysAListOfItems {
+  background: url("./assets/wallpaper-7.webp") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
+
+/* users can input their expenses */
+
+section.usersCanInputTheirExpenses {
+  background: url("./assets/wallpaper-8.webp") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
+
+/* registration form */
+
+section.registrationForm {
+  background: url("./assets/wallpaper-9.jpg") no-repeat center;
+  background-size: cover;
+  scroll-snap-align: start;
+}
