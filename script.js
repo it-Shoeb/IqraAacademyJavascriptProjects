@@ -93,12 +93,14 @@ const customerCaptureWebpageExistCustomer = document.getElementById(
   "customerCaptureWebpage-existCustomer"
 );
 
-let customerCaptureWebpageTableDataForNewCustomer = [
-  //   { name: "Shoeb Shakil Shaikh", email: "admin@example.com" },
-  //   { name: "Shoeb Shakil Shaikh", email: "admin@example.com" },
-  //   { name: "Shoeb Shakil Shaikh", email: "admin@example.com" },
-];
+let customerCaptureWebpageTableDataForNewCustomer = [];
 let customerCaptureWebpageTableDataForExistingCustomer = [];
+
+console.log(
+  NameEl.textContent !== "",
+  EmailEl.textContent !== "",
+  AmountEl.textContent !== ""
+);
 
 TypeEl.addEventListener("change", (e) => {
   if (TypeEl.value === "exisitingcustomer") {
@@ -110,28 +112,17 @@ TypeEl.addEventListener("change", (e) => {
   }
 });
 
-// customerCaptureWebpageAdd.map((add) =>
-//   customerCaptureWebpageAdd.addEventListener("click", (e) => {
-//     console.log(e);
-//   })
-// );
-
-const customerCaptureWebpageAdd = document.querySelectorAll(
-  ".customerCaptureWebpage-add"
-);
-
-const customerCaptureWebpageRemove = document.querySelectorAll(
-  ".customerCaptureWebpage-remove"
-);
-
 customerCaptureWebpageForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  //   if (NameEl !== "" && EmailEl !== "" && TypeEl !== "" && AmountEl !== "") {
-  //     alert("Empty Input Field Not Required");
-  //   }
-
   if (TypeEl.value === "exisitingcustomer") {
+    if (
+      NameEl.textContent !== "" &&
+      EmailEl.textContent !== "" &&
+      AmountEl.textContent !== ""
+    ) {
+      return alert("Empty Input Field Not Required");
+    }
     customerCaptureWebpageTableDataForExistingCustomer.push({
       [NameEl.name]: NameEl.value,
       [EmailEl.name]: EmailEl.value,
@@ -146,11 +137,16 @@ customerCaptureWebpageForm.addEventListener("submit", (e) => {
         <td>${customer.name}</td>
         <td>${customer.email}</td>
         <td>${customer.amount}</td>
-        <td><button class="customerCaptureWebpage-remove">Remove</button></td>
-    </tr>
+        <td>
+        <button class="customerCaptureWebpage-remove">Remove</button>
+        </td>
+        </tr>
     `
       );
   } else {
+    if (NameEl.textContent !== "" && EmailEl.textContent !== "") {
+      return alert("Empty Input Field Not Required");
+    }
     customerCaptureWebpageTableDataForNewCustomer.push({
       [NameEl.name]: NameEl.value,
       [EmailEl.name]: EmailEl.value,
@@ -169,18 +165,118 @@ customerCaptureWebpageForm.addEventListener("submit", (e) => {
       );
   }
 
-  console.log(customerCaptureWebpageAdd);
-
   NameEl.value = "";
   EmailEl.value = "";
   AmountEl.value = "";
 
-  console.log(
-    "NewCustomer",
-    customerCaptureWebpageTableDataForNewCustomer,
-    "ExistingCustomer",
-    customerCaptureWebpageTableDataForExistingCustomer
+  const customerCaptureWebpageAdd = document.querySelectorAll(
+    ".customerCaptureWebpage-add"
   );
+
+  // if (customerCaptureWebpageTableDataForNewCustomer.length) {
+  customerCaptureWebpageAdd.forEach((add) => {
+    add.addEventListener("click", (e) => {
+      const tableRow = add.closest("tr");
+      const tableData = tableRow.querySelectorAll("td");
+
+      const name = tableData[0].textContent;
+      const email = tableData[1].textContent;
+      const amount = 0;
+
+      const filterDate = customerCaptureWebpageTableDataForNewCustomer.filter(
+        (customer, index) => {
+          if (customer.name == name) {
+            console.log("customer", customer, "index", index);
+
+            customerCaptureWebpageTableDataForNewCustomer.splice(index, 1);
+
+            customerCaptureWebpageNewCustomer.innerHTML =
+              customerCaptureWebpageTableDataForNewCustomer.map(
+                (customer) =>
+                  `<tr>
+                        <td>${customer.name}</td>
+                        <td>${customer.email}</td>
+                        <td>
+                          <button class="customerCaptureWebpage-add">Add</button>
+                        </td>
+                      </tr>`
+              );
+          }
+        }
+      );
+
+      customerCaptureWebpageTableDataForExistingCustomer.push({
+        name,
+        email,
+        amount,
+      });
+
+      customerCaptureWebpageExistCustomer.innerHTML =
+        customerCaptureWebpageTableDataForExistingCustomer.map(
+          (customer) =>
+            `
+            <tr>
+                <td>${customer.name}</td>
+                <td>${customer.email}</td>
+                <td>${customer.amount}</td>
+                <td>
+                  <button class="customerCaptureWebpage-remove">Remove</button>
+                </td>
+            </tr>
+            `
+        );
+
+      const customerCaptureWebpageRemove = document.querySelectorAll(
+        ".customerCaptureWebpage-remove"
+      );
+
+      // if (customerCaptureWebpageTableDataForExistingCustomer.length > 0) {
+      customerCaptureWebpageRemove.forEach((remove) => {
+        remove.addEventListener("click", (e) => {
+          console.log(remove);
+
+          const tableRow = remove.closest("tr");
+          const tableData = tableRow.querySelectorAll("td");
+
+          console.log(tableRow, tableData);
+          const email = tableData[1].textContent;
+
+          const filterdData =
+            customerCaptureWebpageTableDataForExistingCustomer.filter(
+              (customer, index) => {
+                if (customer.email == email) {
+                  console.log(customer.email == email, customer.email, email);
+
+                  return customerCaptureWebpageTableDataForExistingCustomer.splice(
+                    index,
+                    1
+                  );
+                }
+              }
+            );
+
+          console.log(customerCaptureWebpageTableDataForExistingCustomer);
+
+          customerCaptureWebpageExistCustomer.innerHTML =
+            customerCaptureWebpageTableDataForExistingCustomer.map(
+              (customer) =>
+                `
+              <tr>
+                  <td>${customer.name}</td>
+                  <td>${customer.email}</td>
+                  <td>${customer.amount}</td>
+                  <td>
+                    <button class="customerCaptureWebpage-remove">Remove</button>
+                  </td>
+              </tr>
+              `
+            );
+        });
+      });
+      // }
+    });
+  });
+  // }
 });
 
 // budget management system

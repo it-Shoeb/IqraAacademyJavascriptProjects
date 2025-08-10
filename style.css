@@ -319,7 +319,7 @@ section.customerCaptureWebpage {
 .customerCaptureWebpage-remove:hover,
 .customerCaptureWebpage-add:focus,
 .customerCaptureWebpage-remove:focus {
-    filter: brightness(80%);
+  filter: brightness(80%);
 }
 .customerCaptureWebpage-add {
   background-color: green;
@@ -332,6 +332,13 @@ section.customerCaptureWebpage {
 @media (max-width: 480px) {
   .customerCaptureWebpage .container {
     width: 100%;
+  }
+  .customers {
+    flex-wrap: wrap;
+  }
+  .newCustomer,
+  .existCustomer {
+    height: 25vh;
   }
 }
 
