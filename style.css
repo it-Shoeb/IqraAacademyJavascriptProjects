@@ -350,6 +350,58 @@ section.budgetmanagementsystem {
   scroll-snap-align: start;
 }
 
+.budgetmanagementsystem .container {
+  width: 80%;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.budgetmanagementsystem .container div {
+  flex: 1;
+}
+
+.budgetmanagementsystem-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.budgetmanagementsystem-form input {
+  width: 100%;
+  padding: .5rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  color: gray ;
+}
+.budgetmanagementsystem-form input:hover {
+  filter: brightness(90%);
+}
+
+.budgetmanagementsystem-form input:last-of-type {
+  background-color: black;
+  font-weight: bold;
+}
+
+
+.budgetmanagementsystem-rhs-table{
+  border: solid;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .budgetmanagementsystem .container {
+    width: 100%;
+  }
+  .budgetmanagementsystem .container {
+    flex-direction: column;
+  }
+}
+
 /* Task Scheduler */
 
 section.taskScheduler {

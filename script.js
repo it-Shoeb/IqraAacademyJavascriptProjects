@@ -172,7 +172,6 @@ customerCaptureWebpageForm.addEventListener("submit", (e) => {
   const customerCaptureWebpageAdd = document.querySelectorAll(
     ".customerCaptureWebpage-add"
   );
-
   // if (customerCaptureWebpageTableDataForNewCustomer.length) {
   customerCaptureWebpageAdd.forEach((add) => {
     add.addEventListener("click", (e) => {
@@ -233,8 +232,6 @@ customerCaptureWebpageForm.addEventListener("submit", (e) => {
       // if (customerCaptureWebpageTableDataForExistingCustomer.length > 0) {
       customerCaptureWebpageRemove.forEach((remove) => {
         remove.addEventListener("click", (e) => {
-          console.log(remove);
-
           const tableRow = remove.closest("tr");
           const tableData = tableRow.querySelectorAll("td");
 
