@@ -367,28 +367,29 @@ section.budgetmanagementsystem {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .budgetmanagementsystem-form input {
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 8px;
   border: none;
   outline: none;
-  color: gray ;
+  color: gray;
 }
-.budgetmanagementsystem-form input:hover {
+.budgetmanagementsystem-form input:hover,
+.budgetmanagementsystem-form input:focus {
   filter: brightness(90%);
 }
 
 .budgetmanagementsystem-form input:last-of-type {
   background-color: black;
   font-weight: bold;
+  color: white;
 }
 
-
-.budgetmanagementsystem-rhs-table{
+.budgetmanagementsystem-rhs-table {
   border: solid;
   width: 100%;
 }
