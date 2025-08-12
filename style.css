@@ -315,12 +315,14 @@ section.customerCaptureWebpage {
   border-radius: 12px;
   color: white;
 }
+
 .customerCaptureWebpage-add:hover,
 .customerCaptureWebpage-remove:hover,
 .customerCaptureWebpage-add:focus,
 .customerCaptureWebpage-remove:focus {
   filter: brightness(80%);
 }
+
 .customerCaptureWebpage-add {
   background-color: green;
 }
@@ -370,23 +372,27 @@ section.budgetmanagementsystem {
   gap: 0.5rem;
 }
 
-.budgetmanagementsystem-form input {
+.budgetmanagementsystem-form input,
+.budgetmanagementsystem-form select {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.8rem;
   border-radius: 8px;
   border: none;
   outline: none;
-  color: gray;
+  color: white;
+  background-color: black;
 }
 .budgetmanagementsystem-form input:hover,
-.budgetmanagementsystem-form input:focus {
+.budgetmanagementsystem-form select:hover,
+.budgetmanagementsystem-form input:focus,
+.budgetmanagementsystem-form select:focus {
   filter: brightness(90%);
 }
 
 .budgetmanagementsystem-form input:last-of-type {
-  background-color: black;
+  background-color: white;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .budgetmanagementsystem-rhs-table {

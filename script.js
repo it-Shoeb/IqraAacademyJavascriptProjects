@@ -277,6 +277,93 @@ customerCaptureWebpageForm.addEventListener("submit", (e) => {
 });
 
 // budget management system
+
+const budgetmanagementsystemformSelectSubject = document.querySelector(
+  ".budgetmanagementsystemform-selectSubject"
+);
+const budgetmanagementsystemformSelectBudget = document.querySelector(
+  ".budgetmanagementsystemform-selectBudget"
+);
+const budgetmanagementsystemform = document.querySelector(
+  ".budgetmanagementsystem-form"
+);
+
+const budgetAmount = document.querySelector(
+  ".budgetmanagementsystemform-budgetAmount"
+);
+const remainingAmount = document.querySelector(
+  ".budgetmanagementsystemform-remainingAmount"
+);
+const amount = document.querySelector(".budgetmanagementsystemform-amount");
+const balanceAmount = document.querySelector(
+  ".budgetmanagementsystemform-balanceAmount"
+);
+
+const typesOfBudgets = [
+  {
+    budgetName: "Microsoft 365 License",
+    budgetAmount: 25000,
+    remainingAmount: 25000,
+  },
+  {
+    budgetName: "Hardware Update",
+    budgetAmount: 5000,
+    remainingAmount: 5000,
+  },
+  {
+    budgetName: "Offshore Support",
+    budgetAmount: 2000,
+    remainingAmount: 2000,
+  },
+];
+
+budgetmanagementsystemformSelectSubject.addEventListener("change", (e) => {
+  if (budgetmanagementsystemformSelectSubject.value !== "") {
+    budgetmanagementsystemformSelectBudget.innerHTML = `                
+      <option value="">Select Budget</option>
+      <option value="Microsoft 365 License">Microsoft 365 License</option>
+      <option value="Hardware Update">Hardware Update</option>
+      <option value="Offshore Support">Offshore Support</option>`;
+  } else {
+    // budgetmanagementsystemformSelectBudget.innerHTML = `
+    //       <option value="">Select Budget</option>
+    // `;
+    budgetmanagementsystemformSelectBudget.innerHTML = `                
+        <option value="">Select Budget</option>
+        <option value="Microsoft 365 License">Microsoft 365 License</option>
+        <option value="Hardware Update">Hardware Update</option>
+        <option value="Offshore Support">Offshore Support</option>`;
+  }
+});
+
+amount.addEventListener("change", (e) => {
+  console.log(budgetmanagementsystemformSelectBudget.value);
+
+  // balanceAmount.value =
+});
+
+budgetmanagementsystemformSelectBudget.addEventListener("change", (e) => {
+  if (budgetmanagementsystemformSelectBudget.value == "Microsoft 365 License") {
+    console.log("Microsoft 365 License");
+    budgetAmount.value = 25000;
+    remainingAmount.value = 25000;
+  } else if (
+    budgetmanagementsystemformSelectBudget.value == "Hardware Update"
+  ) {
+    console.log("Hardware Update");
+
+    budgetAmount.value = 5000;
+    remainingAmount.value = 5000;
+  } else if (
+    budgetmanagementsystemformSelectBudget.value == "Offshore Support"
+  ) {
+    console.log("Offshore Support");
+
+    budgetAmount.value = 2000;
+    remainingAmount.value = 2000;
+  }
+});
+
 // Task Scheduler
 // web page with a table containing data
 // manage employee records

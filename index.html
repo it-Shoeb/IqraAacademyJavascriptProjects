@@ -160,15 +160,53 @@
         <div class="container">
           <div class="budgetmanagementsystem-lhs">
             <form action="" class="budgetmanagementsystem-form">
-              <select name="" id="">
-                <option value="">Performance Issue with joget API Builder</option>
+              <select
+                name=""
+                id=""
+                class="budgetmanagementsystemform-selectSubject"
+              >
+                <option value="">Select Subject</option>
+                <option
+                  value="Performance Issue with joget API Builder - Slow Data Fetch in API"
+                >
+                  Performance Issue with joget API Builder - Slow Data Fetch in
+                  API
+                </option>
               </select>
-              <input class="" type="text" placeholder="Subject" />
-              <input class="" type="text" placeholder="Budget" />
-              <input class="" type="text" placeholder="Budget Amount" />
-              <input class="" type="text" placeholder="Remaining Amount" />
-              <input class="" type="text" placeholder="Amount" />
-              <input class="" type="text" placeholder="Balance Amount" />
+
+              <select
+                name=""
+                id=""
+                class="budgetmanagementsystemform-selectBudget"
+              >
+                <option value="">Select Budget</option>
+                <option value="Microsoft 365 License">
+                  Microsoft 365 License
+                </option>
+                <option value="Hardware Update">Hardware Update</option>
+                <option value="Offshore Support">Offshore Support</option>
+              </select>
+
+              <input
+                class="budgetmanagementsystemform-budgetAmount"
+                type="text"
+                placeholder="Budget Amount"
+                disabled
+              />
+              <input
+                class="budgetmanagementsystemform-remainingAmount"
+                type="text"
+                placeholder="Remaining Amount"
+                disabled
+              />
+              <input class="budgetmanagementsystemform-amount" type="text" placeholder="Amount" />
+
+              <input
+                class="budgetmanagementsystemform-balanceAmount"
+                type="text"
+                placeholder="Balance Amount"
+                disabled
+              />
               <input class="" type="submit" autofocus />
             </form>
           </div>
