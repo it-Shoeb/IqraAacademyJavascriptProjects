@@ -51,7 +51,7 @@
     </header>
 
     <main>
-      <section id="OTPGeneration" class="OTPGeneration">
+      <!-- <section id="OTPGeneration" class="OTPGeneration">
         <div class="otp-form">
           <div class="input-field">
             <label for=""> OTP: </label>
@@ -71,9 +71,9 @@
             <p class="timer hidden">00:00</p>
           </div>
         </div>
-      </section>
+      </section> -->
 
-      <section id="customerCaptureWebpage" class="customerCaptureWebpage">
+      <!-- <section id="customerCaptureWebpage" class="customerCaptureWebpage">
         <div class="container">
           <p class="customerCaptureWebpage-heading">Customer Form</p>
           <form class="customerCaptureWebpage-form" action="">
@@ -122,11 +122,6 @@
                   </tr>
                 </thead>
                 <tbody id="customerCaptureWebpage-newCustomer">
-                  <!-- <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr> -->
                 </tbody>
               </table>
             </div>
@@ -143,20 +138,14 @@
                   </tr>
                 </thead>
                 <tbody id="customerCaptureWebpage-existCustomer">
-                  <!-- <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr> -->
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
-      <section id="budgetmanagementsystem" class="budgetmanagementsystem">
+      <!-- <section id="budgetmanagementsystem" class="budgetmanagementsystem">
         <div class="container">
           <div class="budgetmanagementsystem-lhs">
             <form action="" class="budgetmanagementsystem-form">
@@ -165,7 +154,7 @@
                 id=""
                 class="budgetmanagementsystemform-selectSubject"
               >
-                <option value="">Select Subject</option>
+                <option value=" ">Select Subject</option>
                 <option
                   value="Performance Issue with joget API Builder - Slow Data Fetch in API"
                 >
@@ -179,7 +168,7 @@
                 id=""
                 class="budgetmanagementsystemform-selectBudget"
               >
-                <option value="">Select Budget</option>
+                <option value=" ">Select Budget</option>
                 <option value="Microsoft 365 License">
                   Microsoft 365 License
                 </option>
@@ -199,7 +188,13 @@
                 placeholder="Remaining Amount"
                 disabled
               />
-              <input class="budgetmanagementsystemform-amount" type="text" placeholder="Amount" />
+              <input
+                class="budgetmanagementsystemform-amount"
+                type="number"
+                minlength="0"
+                min="0"
+                placeholder="Amount"
+              />
 
               <input
                 class="budgetmanagementsystemform-balanceAmount"
@@ -222,7 +217,7 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="budgetmanagementsystemrhstable-tbody">
                 <tr>
                   <td>Subject</td>
                   <td>Budget</td>
@@ -241,8 +236,62 @@
             </table>
           </div>
         </div>
-      </section>
-      <section id="taskScheduler" class="taskScheduler"></section>
+      </section> -->
+
+      <!-- <section id="taskScheduler" class="taskScheduler">
+        <div class="container">
+          <p class="heading">Task Scheduler</h1>
+          <div class="taskSchedulerContainer-lhs">
+            <form action="" class="taskSchedulerContainerLhs-form">
+              <input type="text" placeholder="Enter Task Name" />
+              <input type="date" name="" id="" />
+              <select name="" id="">
+                <option value="">Priority</option>
+                <option value="yellow">Low</option>
+                <option value="orange">Medium</option>
+                <option value="red">High</option>
+              </select>
+
+              <input type="submit" value="Add Task" />
+            </form>
+          </div>
+          <div class="taskSchedulerContainer-rhs">
+            <div class="taskSchedulerContainerRhs-cardContainer">
+              <div class="card">
+                <p>task Name</p>
+                <div class="taskSchedulerContainerRhsCardContainer-cta">
+                  <button
+                    class="taskSchedulerContainerRhsCardContainerCta-edit"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="taskSchedulerContainerRhsCardContainerCta-dele"
+                  >
+                    Dele
+                  </button>
+                </div>
+              </div>
+              <div class="card">
+                <p>task Name</p>
+                <div class="taskSchedulerContainerRhsCardContainer-cta">
+                  <button
+                    class="taskSchedulerContainerRhsCardContainerCta-edit"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="taskSchedulerContainerRhsCardContainerCta-dele"
+                  >
+                    Dele
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
       <section
         id="webpageWithATableContainingData"
         class="webpageWithATableContainingData"

@@ -130,9 +130,10 @@ customerCaptureWebpageForm.addEventListener("submit", (e) => {
     });
 
     customerCaptureWebpageExistCustomer.innerHTML =
-      customerCaptureWebpageTableDataForExistingCustomer.map(
-        (customer) =>
-          `
+      customerCaptureWebpageTableDataForExistingCustomer
+        .map(
+          (customer) =>
+            `
     <tr>
         <td>${customer.name}</td>
         <td>${customer.email}</td>
@@ -142,7 +143,8 @@ customerCaptureWebpageForm.addEventListener("submit", (e) => {
         </td>
         </tr>
     `
-      );
+        )
+        .join("");
   } else {
     if (NameEl.textContent !== "" && EmailEl.textContent !== "") {
       return alert("Empty Input Field Not Required");
@@ -299,6 +301,12 @@ const balanceAmount = document.querySelector(
   ".budgetmanagementsystemform-balanceAmount"
 );
 
+const budgetmanagementsystemrhstabletbody = document.querySelector(
+  ".budgetmanagementsystemrhstable-tbody"
+);
+
+const budgetTable = [];
+
 const typesOfBudgets = [
   {
     budgetName: "Microsoft 365 License",
@@ -336,32 +344,112 @@ budgetmanagementsystemformSelectSubject.addEventListener("change", (e) => {
   }
 });
 
-amount.addEventListener("change", (e) => {
-  console.log(budgetmanagementsystemformSelectBudget.value);
-
-  // balanceAmount.value =
-});
+function AmountChangeFun() {
+  amount.addEventListener("change", (e) => {
+    if (
+      parseInt(amount.value) > 0 &&
+      parseInt(amount.value) <= parseInt(remainingAmount.value)
+    ) {
+      balanceAmount.value = remainingAmount.value - amount.value;
+    } else {
+      console.log(
+        "amount should not above and negative (eg -2000 and remaining value is 5000 and you 1000) this invalid"
+      );
+    }
+  });
+}
 
 budgetmanagementsystemformSelectBudget.addEventListener("change", (e) => {
+  amount.value = NaN;
+  balanceAmount.value = "";
   if (budgetmanagementsystemformSelectBudget.value == "Microsoft 365 License") {
     console.log("Microsoft 365 License");
-    budgetAmount.value = 25000;
-    remainingAmount.value = 25000;
+
+    const [SelectedBudget] = typesOfBudgets.filter((budget) => {
+      return budget.budgetName == "Microsoft 365 License";
+    });
+
+    budgetAmount.value = SelectedBudget.budgetAmount;
+    remainingAmount.value = SelectedBudget.remainingAmount;
+
+    AmountChangeFun();
   } else if (
     budgetmanagementsystemformSelectBudget.value == "Hardware Update"
   ) {
     console.log("Hardware Update");
 
-    budgetAmount.value = 5000;
-    remainingAmount.value = 5000;
+    const [SelectedBudget] = typesOfBudgets.filter((budget) => {
+      return budget.budgetName == "Hardware Update";
+    });
+
+    budgetAmount.value = SelectedBudget.budgetAmount;
+    remainingAmount.value = SelectedBudget.remainingAmount;
+
+    AmountChangeFun();
   } else if (
     budgetmanagementsystemformSelectBudget.value == "Offshore Support"
   ) {
     console.log("Offshore Support");
 
-    budgetAmount.value = 2000;
-    remainingAmount.value = 2000;
+    const [SelectedBudget] = typesOfBudgets.filter((budget) => {
+      return budget.budgetName == "Offshore Support";
+    });
+
+    budgetAmount.value = SelectedBudget.budgetAmount;
+    remainingAmount.value = SelectedBudget.remainingAmount;
+
+    AmountChangeFun();
   }
+});
+
+budgetmanagementsystemform.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const subject = e.target[0].value;
+  const budget = e.target[1].value;
+  const budgetAmt = e.target[2].value;
+  const remainingAmt = e.target[3].value;
+  const amt = e.target[4].value;
+  const balanceAmt = e.target[5].value;
+
+  budgetTable.push({
+    subject,
+    budget,
+    budgetAmt,
+    remainingAmt,
+    amt,
+    balanceAmt,
+  });
+
+  if (
+    !amount.value &&
+    budgetmanagementsystemformSelectSubject.value == " " &&
+    budgetmanagementsystemformSelectBudget.value == " "
+  ) {
+    return alert("field should not exmpty");
+  }
+
+  budgetmanagementsystemrhstabletbody.innerHTML = budgetTable
+    .map(
+      (budget) =>
+        `
+    <tr>
+      <td>${budget.budget}</td>
+      <td>${budget.budgetAmt}</td>
+      <td>${budget.amt}</td>
+      <td>${budget.balanceAmt}</td>
+      <td>
+        <button
+          class="budgetmanagementsystemform-remove"
+          id="budgetmanagementsystemform-remove"
+        >
+          Remove
+        </button>
+      </td>
+    </tr>
+  `
+    )
+    .join("");
 });
 
 // Task Scheduler
