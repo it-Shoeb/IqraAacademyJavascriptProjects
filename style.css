@@ -765,7 +765,7 @@ section.webpageThatDisplaysAListOfItems {
 }
 
 .webpageThatDisplaysAListOfItems .container {
-  background-color: rgb(135, 206, 235, 0.6);
+  background-color: rgba(0, 0, 133, 0.5);
   padding: 1.5rem;
   border-radius: 12px;
   display: flex;
@@ -906,13 +906,19 @@ section.usersCanInputTheirExpenses {
   filter: brightness(80%);
 }
 
-/* .usersCanInputTheirExpensesContainer-middle {
-} */
+.usersCanInputTheirExpensesContainer-middle {
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.usersCanInputTheirExpensesContainerMiddle-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
 
 .usersCanInputTheirExpensesContainerMiddle-table {
   width: 100%;
-  max-height: 40vh;
-  overflow-y: auto;
   border-spacing: 1rem;
   background-color: white;
   border-radius: 12px;
@@ -920,6 +926,7 @@ section.usersCanInputTheirExpenses {
 
 .usersCanInputTheirExpensesContainer-bottom {
 }
+
 .usersCanInputTheirExpensesContainer-bottom {
   background-color: white;
   border-radius: 12px;
@@ -934,10 +941,67 @@ section.usersCanInputTheirExpenses {
   font-size: 1.5rem;
 }
 
+@media (max-width: 480px) {
+  .usersCanInputTheirExpenses .container {
+    width: 90%;
+  }
+}
+
 /* registration form */
 
 section.registrationForm {
   background: url("./assets/wallpaper-9.jpg") no-repeat center;
   background-size: cover;
   scroll-snap-align: start;
+}
+
+.registrationForm .container {
+  backdrop-filter: blur(4px);
+  width: 30%;
+  color: rgb(153, 255, 0);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.registrationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.registrationForm-name,
+.registrationForm-password,
+.registrationForm-number,
+.registrationForm-email {
+  color: red;
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+}
+
+.registrationForm label {
+  width: 100%;
+}
+
+.registrationForm input,
+.registrationForm select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: darkblue;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+.registrationForm input:last-child {
+  background-color: greenyellow;
+  color: black;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .registrationForm .container {
+    width: 90%;
+  }
 }

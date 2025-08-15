@@ -51,7 +51,7 @@
     </header>
 
     <main>
-      <!-- <section id="OTPGeneration" class="OTPGeneration">
+      <section id="OTPGeneration" class="OTPGeneration">
         <div class="otp-form">
           <div class="input-field">
             <label for=""> OTP: </label>
@@ -71,9 +71,9 @@
             <p class="timer hidden">00:00</p>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- <section id="customerCaptureWebpage" class="customerCaptureWebpage">
+      <section id="customerCaptureWebpage" class="customerCaptureWebpage">
         <div class="container">
           <p class="customerCaptureWebpage-heading">Customer Form</p>
           <form class="customerCaptureWebpage-form" action="">
@@ -143,9 +143,9 @@
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- <section id="budgetmanagementsystem" class="budgetmanagementsystem">
+      <section id="budgetmanagementsystem" class="budgetmanagementsystem">
         <div class="container">
           <div class="budgetmanagementsystem-lhs">
             <form action="" class="budgetmanagementsystem-form">
@@ -236,9 +236,9 @@
             </table>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- <section id="taskScheduler" class="taskScheduler">
+      <section id="taskScheduler" class="taskScheduler">
         <div class="container">
           <p class="heading">Task Scheduler</h1>
           <div class="taskSchedulerContainer-lhs">
@@ -290,9 +290,9 @@
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- <section
+      <section
         id="webpageWithATableContainingData"
         class="webpageWithATableContainingData"
       >
@@ -325,9 +325,9 @@
             </table>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- <section id="manageEmployeeRecords" class="manageEmployeeRecords">
+      <section id="manageEmployeeRecords" class="manageEmployeeRecords">
         <div class="container">
           <p class="manageEmployeeRecords heading">
             Employees Database Management System
@@ -421,9 +421,9 @@
             </table>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- <section
+      <section
         id="webpageThatDisplaysAListOfItems"
         class="webpageThatDisplaysAListOfItems"
       >
@@ -436,20 +436,20 @@
 
           <div class="webpageThatDisplaysAListOfItems-bottom">
             <div class="pagination-bar">
-              <button>&leftarrow; Prev</button>
+              <button class="webpageThatDisplaysAListOfItemsBottom-prev">&leftarrow; Prev</button>
               <div class="paginationBar-numberBar">
                 <button>1</button><button>2</button><button>3</button
                 ><button>4</button><button>5</button><button>6</button
                 ><button>7</button><button>8</button><button>9</button
                 ><button>10</button>
               </div>
-              <button>Next &RightArrow;</button>
+              <button class="webpageThatDisplaysAListOfItemsBottom-next">Next &RightArrow;</button>
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- <section
+      <section
         id="usersCanInputTheirExpenses"
         class="usersCanInputTheirExpenses"
       >
@@ -458,7 +458,7 @@
 
           <div class="usersCanInputTheirExpensesContainer-top">
             <form action="" class="usersCanInputTheirExpensesContainerTop-form">
-              <input type="text" placeholder="Enter Amount" />
+              <input type="number" placeholder="Enter Amount" />
               <input type="text" placeholder="Enter Category" />
               <input type="text" placeholder="Enter Description" />
               <input type="submit" value="Add Expense" />
@@ -474,22 +474,7 @@
                   <th>Description</th>
                 </tr>
               </thead>
-                <tbody>
-                  <tr>
-                    <td>Amount</td>
-                    <td>Category</td>
-                    <td>Description</td>
-                  </tr>
-                  <tr>
-                    <td>Amount</td>
-                    <td>Category</td>
-                    <td>Description</td>
-                  </tr>
-                  <tr>
-                    <td>Amount</td>
-                    <td>Category</td>
-                    <td>Description</td>
-                  </tr>
+                <tbody class="usersCanInputTheirExpensesContainerMiddleTable-tbody">
                 </tbody>
             </table>
           </div>
@@ -503,15 +488,43 @@
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
 
       <section id="registrationForm" class="registrationForm">
-          <div class="container">
-            <p class="heading">Registration Form</p>
-            <form action="" class="registrationForm">
-              
-            </form>
-          </div>
+        <div class="container">
+          <p class="heading">Registration Form</p>
+          <form action="" class="registrationForm">
+            <label for="">
+              <input type="text" placeholder="Enter Your Name" />
+              <p class="hidden registrationForm-name">
+                Name is field is required, it not be empty
+              </p>
+            </label>
+            <label for="">
+              <input type="password" placeholder="Enter Password" />
+              <p class="hidden registrationForm-password">
+                password is field is required, it not be empty
+              </p>
+            </label>
+            <label for="">
+              <input type="number" placeholder="Enter Mobile Number" />
+              <p class="hidden registrationForm-number">
+                number is field is required, it not be empty
+              </p>
+            </label>
+            <label for="">
+              <input type="email" placeholder="Enter Your Email" />
+              <p class="hidden registrationForm-email">
+                email is field is required, it not be empty
+              </p>
+            </label>
+            <select name="" id="" class="registrationForm-country">
+              <option value="">Select Country</option>
+            </select>
+            <input class="registrationForm-currency" type="text" />
+            <input type="submit" value="Register" />
+          </form>
+        </div>
       </section>
     </main>
 
