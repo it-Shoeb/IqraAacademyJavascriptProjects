@@ -35,6 +35,28 @@ section {
   cursor: default;
 }
 
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.subheading {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+tr th {
+  text-align: left;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
 /* header */
 
 header {
@@ -202,8 +224,6 @@ section.customerCaptureWebpage {
 }
 
 .customerCaptureWebpage-heading {
-  font-size: 2rem;
-  font-weight: bold;
   color: white;
 }
 
@@ -431,8 +451,8 @@ section.taskScheduler {
   gap: 1rem;
 }
 
-.taskSchedulerContainer-lhs {
-}
+/* .taskSchedulerContainer-lhs {
+} */
 
 .taskSchedulerContainerLhs-form {
   display: flex;
@@ -442,8 +462,6 @@ section.taskScheduler {
 }
 
 .taskScheduler .heading {
-  font-size: 2rem;
-  font-weight: bold;
   color: purple;
 }
 
@@ -475,7 +493,7 @@ section.taskScheduler {
   overflow-y: auto;
   padding: 0.5rem 1rem;
 }
-  
+
 .taskSchedulerContainer-rhs::-webkit-scrollbar {
   display: none;
 }
@@ -543,12 +561,199 @@ section.webpageWithATableContainingData {
   scroll-snap-align: start;
 }
 
+.webpageWithATableContainingData .container {
+  background-color: #000000aa;
+  color: white;
+  /* backdrop-filter: blur(100px); */
+  width: 60%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+}
+
+.webpageWithATableContainingData-top {
+  display: flex;
+  width: 100%;
+}
+
+.webpageWithATableContainingData-top input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: gray;
+}
+.webpageWithATableContainingData-top input:hover,
+.webpageWithATableContainingData-top input:focus {
+  filter: brightness(95%);
+}
+
+.webpageWithATableContainingData-bottom {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.webpageWithATableContainingDataContainer-table {
+  width: 100%;
+}
+
+.webpageWithATableContainingDataContainer-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* .webpageWithATableContainingDataContainer-table tbody { */
+/* width: 10%; */
+/* } */
+
+.webpageWithATableContainingDataContainer-table {
+  border-spacing: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .webpageWithATableContainingData .container {
+    width: 90%;
+  }
+}
+
 /* manage employee records */
 
 section.manageEmployeeRecords {
   background: url("./assets/wallpaper-6.jpg") no-repeat center;
   background-size: cover;
   scroll-snap-align: start;
+}
+
+.manageEmployeeRecords .container {
+  backdrop-filter: blur(1rem);
+  color: rgb(255, 159, 50);
+  /* backdrop-filter: blur(100px); */
+  /* width: 60%; */
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  gap: 2rem;
+  width: 70%;
+}
+
+/* .manageEmployeeRecordsContainer-top{
+
+} */
+
+.manageEmployeeRecordsContainerTop-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 100%;
+}
+
+.manageEmployeeRecordsContainerTop-form input {
+  width: 49%;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+.manageEmployeeRecordsContainerTop-form input:hover,
+.manageEmployeeRecordsContainerTop-form input:focus {
+  filter: brightness(85%);
+}
+
+.manageEmployeeRecordsContainerTop-form input:last-child {
+  width: 100%;
+  background-color: rgb(121, 0, 0);
+  color: white;
+  font-weight: bold;
+}
+
+.manageEmployeeRecordsContainer-middle {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.manageEmployeeRecordsContainerMiddle-inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.manageEmployeeRecordsContainer-middle input {
+  width: 100%;
+  background-color: none;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.manageEmployeeRecordsContainer-middle input:hover,
+.manageEmployeeRecordsContainer-middle input:focus {
+  filter: brightness(85%);
+}
+
+.manageEmployeeRecordsContainer-bottom {
+  display: flex;
+  flex-direction: column;
+  max-height: 40vh;
+  overflow: auto;
+  gap: 1rem;
+  background-color: rgba(121, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.manageEmployeeRecordsContainerBottom-table {
+  width: 100%;
+  border-spacing: 1rem;
+  overflow: auto;
+}
+
+.manageEmployeeRecordsContainerBottom-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.manageEmployeeRecordsContainerBottom-table tbody tr {
+}
+
+.manageEmployeeRecordsContainerBottomTableTbody-cta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.manageEmployeeRecordsContainerBottomTableTbody-cta button {
+  width: 49%;
+  padding: 0.2rem;
+  background-color: rgb(121, 0, 0);
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  .manageEmployeeRecords .container {
+    width: 90%;
+  }
+
+  .manageEmployeeRecordsContainerTop-form input {
+    width: 47%;
+  }
+
+  .manageEmployeeRecords .container {
+    padding: 0.5rem;
+  }
 }
 
 /* web page that displays a list of items */
@@ -559,12 +764,174 @@ section.webpageThatDisplaysAListOfItems {
   scroll-snap-align: start;
 }
 
+.webpageThatDisplaysAListOfItems .container {
+  background-color: rgb(135, 206, 235, 0.6);
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 40%;
+}
+
+.webpageThatDisplaysAListOfItems .container .heading {
+  color: white;
+}
+
+.webpageThatDisplaysAListOfItems-top {
+  display: flex;
+  justify-content: center;
+}
+
+.webpageThatDisplaysAListOfItems-top ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.webpageThatDisplaysAListOfItems-top ul li {
+  border-bottom: solid 1px rgb(255, 255, 255);
+  border-radius: 5px;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0.3rem 2rem;
+  box-shadow: 0 4px 2px 1px rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  cursor: default;
+}
+
+.webpageThatDisplaysAListOfItemsTop-items {
+}
+
+.webpageThatDisplaysAListOfItems bottom {
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paginationBar-numberBar {
+  display: flex;
+  justify-content: space-between;
+  /* border: solid; */
+  width: 100%;
+  padding: 0 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+}
+
+.pagination-bar > button {
+  background-color: rgb(0, 27, 116);
+  white-space: nowrap;
+}
+
+.paginationBar-numberBar > button {
+  background-color: rgb(0, 27, 116, 0.5);
+}
+
+.pagination-bar button {
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pagination-bar button:hover,
+.pagination-bar button:focus {
+  filter: brightness(85%);
+}
+
+@media (max-width: 480px) {
+  .webpageThatDisplaysAListOfItems .container {
+    width: 90%;
+  }
+}
+
 /* users can input their expenses */
 
 section.usersCanInputTheirExpenses {
   background: url("./assets/wallpaper-8.webp") no-repeat center;
   background-size: cover;
   scroll-snap-align: start;
+}
+
+.usersCanInputTheirExpenses .container {
+  background-color: whitesmoke;
+  width: 50%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: #b97548;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.usersCanInputTheirExpensesContainer-top {
+  display: flex;
+}
+
+.usersCanInputTheirExpensesContainerTop-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.usersCanInputTheirExpensesContainerTop-form input::placeholder {
+  color: #b97548;
+}
+
+.usersCanInputTheirExpensesContainerTop-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid;
+  outline: none;
+  background-color: transparent;
+  color: #b97548;
+}
+.usersCanInputTheirExpensesContainerTop-form input:last-child {
+  background-color: #b97548;
+  color: white;
+  font-weight: bold;
+}
+
+.usersCanInputTheirExpensesContainerTop-form input:hover,
+.usersCanInputTheirExpensesContainerTop-form input:focus {
+  filter: brightness(80%);
+}
+
+/* .usersCanInputTheirExpensesContainer-middle {
+} */
+
+.usersCanInputTheirExpensesContainerMiddle-table {
+  width: 100%;
+  max-height: 40vh;
+  overflow-y: auto;
+  border-spacing: 1rem;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.usersCanInputTheirExpensesContainer-bottom {
+}
+.usersCanInputTheirExpensesContainer-bottom {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.usersCanInputTheirExpensesContainerBottomSummaryContainer-summary {
+  font-size: 1.5rem;
 }
 
 /* registration form */
