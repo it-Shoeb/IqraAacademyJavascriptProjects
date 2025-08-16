@@ -22,6 +22,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
 
 .hidden {
@@ -85,6 +86,7 @@ nav {
   display: flex;
   justify-content: start;
 }
+
 .toggle-switch {
   padding: 0.2rem 1rem;
   border-radius: 1rem;
@@ -208,7 +210,7 @@ section.OTPGeneration {
 
 @media (max-width: 480px) {
   .otp-form {
-    width: 90%;
+    width: 100%;
   }
 }
 
@@ -454,6 +456,19 @@ section.taskScheduler {
 /* .taskSchedulerContainer-lhs {
 } */
 
+.yellow {
+  background-color: rgba(255, 255, 0, 0.5);
+  color: white;
+}
+.orange {
+  background-color: rgba(255, 200, 0, 0.5);
+  color: white;
+}
+.red {
+  background-color: rgba(255, 0, 0, 0.5);
+  color: white;
+}
+
 .taskSchedulerContainerLhs-form {
   display: flex;
   flex-wrap: wrap;
@@ -531,7 +546,7 @@ section.taskScheduler {
 
 @media (max-width: 480px) {
   .taskScheduler .container {
-    width: 90%;
+    width: 100%;
   }
   .taskSchedulerContainerLhs-form {
     gap: 0.5rem;
@@ -619,7 +634,7 @@ section.webpageWithATableContainingData {
 
 @media (max-width: 480px) {
   .webpageWithATableContainingData .container {
-    width: 90%;
+    width: 100%;
   }
 }
 
@@ -632,14 +647,12 @@ section.manageEmployeeRecords {
 }
 
 .manageEmployeeRecords .container {
-  backdrop-filter: blur(1rem);
-  color: rgb(255, 159, 50);
-  /* backdrop-filter: blur(100px); */
-  /* width: 60%; */
+  /* backdrop-filter: blur(1rem); */
+  background-color: white;
+  color: #212145;
   padding: 1.5rem;
   border-radius: 12px;
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
   gap: 2rem;
   width: 70%;
@@ -656,16 +669,21 @@ section.manageEmployeeRecords {
   max-width: 100%;
 }
 
+.manageEmployeeRecordsContainerTop-form input::placeholder {
+  color: #212145;
+}
+
 .manageEmployeeRecordsContainerTop-form input {
   width: 49%;
   padding: 0.5rem;
   outline: none;
   border: none;
-  border-radius: 4px;
+  border-top: solid 1px;
 }
+
 .manageEmployeeRecordsContainerTop-form input:hover,
 .manageEmployeeRecordsContainerTop-form input:focus {
-  filter: brightness(85%);
+  filter: brightness(95%);
 }
 
 .manageEmployeeRecordsContainerTop-form input:last-child {
@@ -689,33 +707,35 @@ section.manageEmployeeRecords {
 
 .manageEmployeeRecordsContainer-middle input {
   width: 100%;
-  background-color: none;
   border: none;
   outline: none;
   padding: 0.5rem;
   border-radius: 4px;
+  background-color: whitesmoke;
 }
 
 .manageEmployeeRecordsContainer-middle input:hover,
 .manageEmployeeRecordsContainer-middle input:focus {
-  filter: brightness(85%);
+  filter: brightness(95%);
 }
 
 .manageEmployeeRecordsContainer-bottom {
   display: flex;
   flex-direction: column;
-  max-height: 40vh;
-  overflow: auto;
   gap: 1rem;
-  background-color: rgba(121, 0, 0, 0.4);
+  background-color: rgba(121, 0, 0, 0.3);
   border-radius: 12px;
   padding: 1rem;
+}
+
+.manageEmployeeRecordsContainerBottom-tableContainer {
+  max-height: 30vh;
+  overflow: auto;
 }
 
 .manageEmployeeRecordsContainerBottom-table {
   width: 100%;
   border-spacing: 1rem;
-  overflow: auto;
 }
 
 .manageEmployeeRecordsContainerBottom-table thead {
@@ -723,6 +743,7 @@ section.manageEmployeeRecords {
   top: 0;
   z-index: 2;
 }
+
 .manageEmployeeRecordsContainerBottom-table tbody tr {
 }
 
@@ -741,10 +762,14 @@ section.manageEmployeeRecords {
   outline: none;
   border-radius: 4px;
 }
+.manageEmployeeRecordsContainerBottomTableTbody-cta button:hover,
+.manageEmployeeRecordsContainerBottomTableTbody-cta button:focus {
+  filter: brightness(130%);
+}
 
 @media (max-width: 480px) {
   .manageEmployeeRecords .container {
-    width: 90%;
+    width: 100%;
   }
 
   .manageEmployeeRecordsContainerTop-form input {
@@ -848,7 +873,7 @@ section.webpageThatDisplaysAListOfItems {
 
 @media (max-width: 480px) {
   .webpageThatDisplaysAListOfItems .container {
-    width: 90%;
+    width: 100%;
   }
 }
 
@@ -943,7 +968,7 @@ section.usersCanInputTheirExpenses {
 
 @media (max-width: 480px) {
   .usersCanInputTheirExpenses .container {
-    width: 90%;
+    width: 100%;
   }
 }
 
@@ -956,9 +981,10 @@ section.registrationForm {
 }
 
 .registrationForm .container {
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
+  background-color: white;
+  color: #452689;
   width: 30%;
-  color: rgb(153, 255, 0);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -985,23 +1011,40 @@ section.registrationForm {
   width: 100%;
 }
 
+.registrationForm input::placeholder {
+  color: #285f9d;
+}
+
 .registrationForm input,
 .registrationForm select {
   padding: 0.5rem;
-  border-radius: 6px;
-  color: darkblue;
+  color: #285f9d;
+  /* background-color: rgb(153, 255, 0); */
   border: none;
+  border-bottom: solid 2px;
   outline: none;
   width: 100%;
 }
+.registrationForm input:hover,
+.registrationForm select:hover,
+.registrationForm input:focus,
+.registrationForm select:focus {
+  filter: brightness(95%);
+}
+
+.registrationForm input:nth-child(6) {
+  filter: brightness(90%);
+}
+
 .registrationForm input:last-child {
-  background-color: greenyellow;
-  color: black;
+  background-color: #452689;
   font-weight: bold;
+  border: none;
+  color: white;
 }
 
 @media (max-width: 480px) {
   .registrationForm .container {
-    width: 90%;
+    width: 100%;
   }
 }

@@ -454,6 +454,55 @@ budgetmanagementsystemform.addEventListener("submit", (e) => {
 });
 
 // Task Scheduler
+
+const taskSchedulerContainerLhsForm = document.querySelector(
+  ".taskSchedulerContainerLhs-form"
+);
+const taskSchedulerContainerRhsCardContainer = document.querySelector(
+  ".taskSchedulerContainerRhs-cardContainer"
+);
+
+const taskSchedulerData = [];
+
+taskSchedulerContainerLhsForm.addEventListener("submit", (e) => {
+  const name = e.target[0];
+  const date = e.target[1];
+  const prority = e.target[2];
+
+  taskSchedulerData.push({
+    name: name.value,
+    date: date.value,
+    prority: prority.value,
+  });
+
+  console.log(taskSchedulerData);
+
+  showTaskSchedular(taskSchedulerData);
+});
+
+function showTaskSchedular(task) {
+  taskSchedulerContainerRhsCardContainer.innerHTML = task
+    .map(
+      (task) =>
+        `<div class="card ${task.prority}">
+          <p>${task.name}</p>
+          <div class="taskSchedulerContainerRhsCardContainer-cta">
+            <button
+              class="taskSchedulerContainerRhsCardContainerCta-edit"
+            >
+              Edit
+            </button>
+            <button
+              class="taskSchedulerContainerRhsCardContainerCta-dele"
+            >
+              Dele
+            </button>
+          </div>
+        </div>`
+    )
+    .join("");
+}
+
 // web page with a table containing data
 
 const products = [
@@ -490,27 +539,164 @@ const webpageWithATableContainingDataContainerTabletbody =
     ".webpageWithATableContainingDataContainerTable-tbody"
   );
 
-const appnededTableData = products.forEach((product) => {
-  let tr = document.createElement("tr");
-  let td1 = document.createElement("td");
-  let td2 = document.createElement("td");
-  let td3 = document.createElement("td");
+const webpageWithATableContainingDataTopInput = document.querySelector(
+  ".webpageWithATableContainingDataTop-input"
+);
 
-  td1.textContent = product.product;
-  td3.textContent = product.price;
-  td2.textContent = product.category;
+showwebpagewithatabledata(products);
+function showwebpagewithatabledata(products) {
+  webpageWithATableContainingDataContainerTabletbody.innerHTML = products
+    .map(
+      (product) =>
+        `
+      <tr>
+        <td>${product.product}</td>
+        <td>${product.category}</td>
+        <td>${product.price}</td>
+      </tr>
+    `
+    )
+    .join("");
+  // products.forEach((product) => {
+  //   let tr = document.createElement("tr");
+  //   let td1 = document.createElement("td");
+  //   let td2 = document.createElement("td");
+  //   let td3 = document.createElement("td");
 
-  tr.append(td1);
-  tr.append(td2);
-  tr.append(td3);
+  //   td1.textContent = product.product;
+  //   td3.textContent = product.price;
+  //   td2.textContent = product.category;
 
-  webpageWithATableContainingDataContainerTabletbody.append(tr);
+  //   tr.append(td1);
+  //   tr.append(td2);
+  //   tr.append(td3);
+
+  //   webpageWithATableContainingDataContainerTabletbody.append(tr);
+  // });
+}
+
+webpageWithATableContainingDataTopInput.addEventListener("keydown", (e) => {
+  const input = e.target.value.toLowerCase();
+
+  const sortedTableData = products.filter((pro) =>
+    pro.product.toLowerCase().includes(input)
+  );
+
+  console.log(sortedTableData);
+
+  showwebpagewithatabledata(sortedTableData);
 });
 
-// console.log(appnededTableData);
+showwebpagewithatabledata(products);
 
 // manage employee records
 
+const manageEmployeeRecordsContainerTopForm = document.querySelector(
+  ".manageEmployeeRecordsContainerTop-form"
+);
+
+const manageEmployeeRecordsContainerBottomTableTbody = document.querySelector(
+  ".manageEmployeeRecordsContainerBottomTable-tbody"
+);
+
+const manageEmployeeRecordsContainerMiddleInputContainerInput =
+  document.querySelector(
+    ".manageEmployeeRecordsContainerMiddleInputContainer-input"
+  );
+
+const employeeData = [
+  {
+    employeeName: "Lorem ipsum dolor",
+    employeeAage: "adipisicing elit. Similique",
+    employeeEmail: "sit amet consectetur",
+    employeeDepartment: "tenetur repellat, nemo",
+  },
+  {
+    employeeName: "quia, culpa velit",
+    employeeAage: "doloribus numquam mollitia",
+    employeeEmail: "itaque hic consequatur atque",
+    employeeDepartment: "quisquam, beatae corrupti",
+  },
+
+  {
+    employeeName: "nobis? Aliquid ipsam",
+    employeeAage: "esse porro.",
+    employeeEmail: "ipsum dolor, sit",
+    employeeDepartment: "amet consectetur adipisicing",
+  },
+  {
+    employeeName: "elit. Similique tenetur",
+    employeeAage: "repellat, nemo quia",
+    employeeEmail: "culpa velit doloribus",
+    employeeDepartment: "numquam mollitia itaque",
+  },
+  {
+    employeeName: "hic consequatur atque",
+    employeeAage: "quisquam, beatae corrupti",
+    employeeEmail: "nobis? Aliquid",
+    employeeDepartment: "ipsam esse porro.",
+  },
+];
+
+manageEmployeeRecordsContainerTopForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const employeeName = e.target[0];
+  const employeeAage = e.target[1];
+  const employeeEmail = e.target[2];
+  const employeeDepartment = e.target[3];
+
+  employeeData.push({
+    employeeName: employeeName.value,
+    employeeAage: employeeAage.value,
+    employeeEmail: employeeEmail.value,
+    employeeDepartment: employeeDepartment.value,
+  });
+
+  showEmployeeData(employeeData);
+
+  employeeName.value = "";
+  employeeAage.value = "";
+  employeeEmail.value = "";
+  employeeDepartment.value = "";
+});
+
+manageEmployeeRecordsContainerMiddleInputContainerInput.addEventListener(
+  "keydown",
+  (e) => {
+    const inputValue = e.target.value.toLowerCase();
+
+    const filteredEmployees = employeeData.filter((employee) => {
+      return employee.employeeName.toLowerCase().includes(inputValue);
+    });
+
+    console.log(filteredEmployees);
+    showEmployeeData(filteredEmployees);
+  }
+);
+
+showEmployeeData(employeeData);
+function showEmployeeData(employeeData) {
+  manageEmployeeRecordsContainerBottomTableTbody.innerHTML = employeeData
+    .map(
+      (employee) =>
+        `
+        <tr>
+          <td>${employee.employeeName}</td>
+          <td>${employee.employeeAage}</td>
+          <td>${employee.employeeEmail}</td>
+          <td>${employee.employeeDepartment}</td>
+          <td
+            class="manageEmployeeRecordsContainerBottomTableTbody-cta"
+          >
+            <button>Edit</button>
+            <button>Dele</button>
+          </td>
+        </tr>
+        `
+    )
+    .join("");
+}
 // web page that displays a list of items
 
 const jsItems = [
@@ -740,27 +926,29 @@ registrationFormCountry.addEventListener("change", (e) => {
 registrationForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const name = e.target[0].value;
-  const password = e.target[1].value;
-  const number = e.target[2].value;
-  const email = e.target[3].value;
+  const name = e.target[0];
+  const password = e.target[1];
+  const number = e.target[2];
+  const email = e.target[3];
+  const country = e.target[4];
+  const currency = e.target[5];
 
-  console.log(name, password, number, email);
+  console.log(name.value, password.value, number.value, email.value);
 
-  if (name === "") {
+  if (name.value === "") {
     registrationFormName.classList.remove("hidden");
     return;
   } else {
     registrationFormName.classList.add("hidden");
   }
 
-  if (password === "") {
+  if (password.value === "") {
     registrationFormPassword.classList.remove("hidden");
     return;
   } else {
-    console.log(password.length);
+    console.log(password.value.length);
 
-    if (password.length < 8) {
+    if (password.value.length < 8) {
       registrationFormPassword.classList.remove("hidden");
       registrationFormPassword.textContent =
         "password must be more than 8 chracters";
@@ -770,19 +958,28 @@ registrationForm.addEventListener("submit", (e) => {
     registrationFormPassword.classList.add("hidden");
   }
 
-  if (number === "") {
+  if (number.value === "") {
     registrationFormNumber.classList.remove("hidden");
     return;
   } else {
     registrationFormNumber.classList.add("hidden");
   }
 
-  if (email === "") {
+  if (email.value === "") {
     registrationFormEmail.classList.remove("hidden");
     return;
   } else {
     registrationFormEmail.classList.add("hidden");
   }
+
+  name.value = "";
+  password.value = "";
+  number.value = "";
+  email.value = "";
+  country.value = "";
+  currency.value = "";
+
+  alert("Registration Form Submitted");
 
   const alphabets = [
     "a",

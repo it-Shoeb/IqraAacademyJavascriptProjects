@@ -202,7 +202,7 @@
                 placeholder="Balance Amount"
                 disabled
               />
-              <input class="" type="submit" autofocus />
+              <input class="" type="submit" />
             </form>
           </div>
 
@@ -301,7 +301,7 @@
       <div class="container">
           <p class="webpageWithATableContainingData-heading heading">Sortable & Filterable Table</p>
           <div class="webpageWithATableContainingData-top">
-            <input type="text" placeholder="Enter Product Name"/>
+            <input type="text" placeholder="Enter Product Name" class="webpageWithATableContainingDataTop-input"/>
           </div>
 
           <div class="webpageWithATableContainingData-bottom">
@@ -346,15 +346,17 @@
           <div class="manageEmployeeRecordsContainer-middle">
             <p class="subheading">Search Employye</p>
             <div class="manageEmployeeRecordsContainerMiddle-inputContainer">
-              <input type="text" placeholder="Enter Employee Name ... " />
+              <input type="text" placeholder="Enter Employee Name ... " class="manageEmployeeRecordsContainerMiddleInputContainer-input" />
             </div>
           </div>
           <div class="manageEmployeeRecordsContainer-bottom">
             <p class="subheading">Employyes List</p>
+            <div class="manageEmployeeRecordsContainerBottom-tableContainer">
             <table class="manageEmployeeRecordsContainerBottom-table">
               <thead>
                 <tr>
-                  <th>Name/ Email</th>
+                  <th>Name</th>
+                  <th>Email</th>
                   <th>Age</th>
                   <th>Department</th>
                   <th>Action</th>
@@ -362,52 +364,8 @@
               </thead>
               <tbody class="manageEmployeeRecordsContainerBottomTable-tbody">
                 <tr>
-                  <td>
-                    <p>Name</p>
-                    <p>Email</p>
-                  </td>
-                  <td>Age</td>
-                  <td>Department</td>
-                  <td
-                    class="manageEmployeeRecordsContainerBottomTableTbody-cta"
-                  >
-                    <button>Edit</button>
-                    <button>Dele</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p>Name</p>
-                    <p>Email</p>
-                  </td>
-                  <td>Age</td>
-                  <td>Department</td>
-                  <td
-                    class="manageEmployeeRecordsContainerBottomTableTbody-cta"
-                  >
-                    <button>Edit</button>
-                    <button>Dele</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p>Name</p>
-                    <p>Email</p>
-                  </td>
-                  <td>Age</td>
-                  <td>Department</td>
-                  <td
-                    class="manageEmployeeRecordsContainerBottomTableTbody-cta"
-                  >
-                    <button>Edit</button>
-                    <button>Dele</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p>Name</p>
-                    <p>Email</p>
-                  </td>
+                  <td>Name</td>
+                  <td>Email</td>
                   <td>Age</td>
                   <td>Department</td>
                   <td
@@ -419,6 +377,8 @@
                 </tr>
               </tbody>
             </table>
+            </div>
+
           </div>
         </div>
       </section>
@@ -521,7 +481,7 @@
             <select name="" id="" class="registrationForm-country">
               <option value="">Select Country</option>
             </select>
-            <input class="registrationForm-currency" type="text" />
+            <input class="registrationForm-currency" type="text" disabled />
             <input type="submit" value="Register" />
           </form>
         </div>
