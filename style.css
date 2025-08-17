@@ -31,6 +31,7 @@ section {
   visibility: hidden;
   width: 0;
 }
+
 .disabled {
   filter: brightness(50%);
   cursor: default;
@@ -56,6 +57,15 @@ tr th {
   text-align: left;
   font-weight: 900;
   font-size: 1.1rem;
+}
+
+input:hover,
+input:focus,
+select:hover,
+select:focus,
+button:hover,
+button:focus {
+  filter: brightness(90%);
 }
 
 /* header */
@@ -129,7 +139,7 @@ main {
   flex-direction: column;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   header {
     padding: 0;
     width: 0;
@@ -208,7 +218,7 @@ section.OTPGeneration {
   font-size: 1.5rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .otp-form {
     width: 100%;
   }
@@ -289,12 +299,12 @@ section.customerCaptureWebpage {
   font-weight: bold;
 }
 
-.customerCaptureWebpage-form-cta input[type="submit"]:hover,
+/* .customerCaptureWebpage-form-cta input[type="submit"]:hover,
 .customerCaptureWebpage-form-cta input[type="submit"]:focus,
 .customerCaptureWebpage-form-cta button:hover,
 .customerCaptureWebpage-form-cta button:focus {
   filter: brightness(90%);
-}
+} */
 
 .customers {
   display: flex;
@@ -338,12 +348,12 @@ section.customerCaptureWebpage {
   color: white;
 }
 
-.customerCaptureWebpage-add:hover,
+/* .customerCaptureWebpage-add:hover,
 .customerCaptureWebpage-remove:hover,
 .customerCaptureWebpage-add:focus,
 .customerCaptureWebpage-remove:focus {
   filter: brightness(80%);
-}
+} */
 
 .customerCaptureWebpage-add {
   background-color: green;
@@ -353,7 +363,7 @@ section.customerCaptureWebpage {
   background-color: red;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .customerCaptureWebpage .container {
     width: 100%;
   }
@@ -404,12 +414,12 @@ section.budgetmanagementsystem {
   color: white;
   background-color: black;
 }
-.budgetmanagementsystem-form input:hover,
+/* .budgetmanagementsystem-form input:hover,
 .budgetmanagementsystem-form select:hover,
 .budgetmanagementsystem-form input:focus,
 .budgetmanagementsystem-form select:focus {
   filter: brightness(90%);
-}
+} */
 
 .budgetmanagementsystem-form input:last-of-type {
   background-color: white;
@@ -425,7 +435,7 @@ section.budgetmanagementsystem {
   text-align: left;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .budgetmanagementsystem .container {
     width: 100%;
   }
@@ -494,14 +504,14 @@ section.taskScheduler {
   font-weight: bold;
 }
 
-.taskSchedulerContainerLhs-form input:focus,
+/* .taskSchedulerContainerLhs-form input:focus,
 .taskSchedulerContainerLhs-form select:focus,
 .taskSchedulerContainerRhs-cardContainer .card button:focus,
 .taskSchedulerContainerLhs-form select:hover,
 .taskSchedulerContainerLhs-form input:hover,
 .taskSchedulerContainerRhs-cardContainer .card button:hover {
   filter: brightness(90%);
-}
+} */
 
 .taskSchedulerContainer-rhs {
   max-height: 50vh;
@@ -544,7 +554,7 @@ section.taskScheduler {
   background-color: #ff0000aa;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .taskScheduler .container {
     width: 100%;
   }
@@ -604,10 +614,11 @@ section.webpageWithATableContainingData {
   font-size: 1rem;
   color: gray;
 }
-.webpageWithATableContainingData-top input:hover,
+
+/* .webpageWithATableContainingData-top input:hover,
 .webpageWithATableContainingData-top input:focus {
   filter: brightness(95%);
-}
+} */
 
 .webpageWithATableContainingData-bottom {
   max-height: 60vh;
@@ -632,7 +643,7 @@ section.webpageWithATableContainingData {
   border-spacing: 0.9rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .webpageWithATableContainingData .container {
     width: 100%;
   }
@@ -681,10 +692,10 @@ section.manageEmployeeRecords {
   border-top: solid 1px;
 }
 
-.manageEmployeeRecordsContainerTop-form input:hover,
+/* .manageEmployeeRecordsContainerTop-form input:hover,
 .manageEmployeeRecordsContainerTop-form input:focus {
   filter: brightness(95%);
-}
+} */
 
 .manageEmployeeRecordsContainerTop-form input:last-child {
   width: 100%;
@@ -714,10 +725,10 @@ section.manageEmployeeRecords {
   background-color: whitesmoke;
 }
 
-.manageEmployeeRecordsContainer-middle input:hover,
+/* .manageEmployeeRecordsContainer-middle input:hover,
 .manageEmployeeRecordsContainer-middle input:focus {
   filter: brightness(95%);
-}
+} */
 
 .manageEmployeeRecordsContainer-bottom {
   display: flex;
@@ -762,12 +773,13 @@ section.manageEmployeeRecords {
   outline: none;
   border-radius: 4px;
 }
-.manageEmployeeRecordsContainerBottomTableTbody-cta button:hover,
+
+/* .manageEmployeeRecordsContainerBottomTableTbody-cta button:hover,
 .manageEmployeeRecordsContainerBottomTableTbody-cta button:focus {
   filter: brightness(130%);
-}
+} */
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .manageEmployeeRecords .container {
     width: 100%;
   }
@@ -866,12 +878,13 @@ section.webpageThatDisplaysAListOfItems {
   border-radius: 4px;
   cursor: pointer;
 }
-.pagination-bar button:hover,
+
+/* .pagination-bar button:hover,
 .pagination-bar button:focus {
   filter: brightness(85%);
-}
+} */
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .webpageThatDisplaysAListOfItems .container {
     width: 100%;
   }
@@ -926,10 +939,10 @@ section.usersCanInputTheirExpenses {
   font-weight: bold;
 }
 
-.usersCanInputTheirExpensesContainerTop-form input:hover,
+/* .usersCanInputTheirExpensesContainerTop-form input:hover,
 .usersCanInputTheirExpensesContainerTop-form input:focus {
   filter: brightness(80%);
-}
+} */
 
 .usersCanInputTheirExpensesContainer-middle {
   max-height: 30vh;
@@ -966,7 +979,7 @@ section.usersCanInputTheirExpenses {
   font-size: 1.5rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .usersCanInputTheirExpenses .container {
     width: 100%;
   }
@@ -1025,16 +1038,17 @@ section.registrationForm {
   outline: none;
   width: 100%;
 }
-.registrationForm input:hover,
+
+/* .registrationForm input:hover,
 .registrationForm select:hover,
 .registrationForm input:focus,
 .registrationForm select:focus {
   filter: brightness(95%);
-}
+} */
 
-.registrationForm input:nth-child(6) {
+/* .registrationForm input:nth-child(6) {
   filter: brightness(90%);
-}
+} */
 
 .registrationForm input:last-child {
   background-color: #452689;
@@ -1043,7 +1057,7 @@ section.registrationForm {
   color: white;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .registrationForm .container {
     width: 100%;
   }

@@ -306,7 +306,61 @@ const budgetmanagementsystemrhstabletbody = document.querySelector(
   ".budgetmanagementsystemrhstable-tbody"
 );
 
-const budgetTable = [];
+const budgetmanagementsystemformRemove = document.querySelectorAll(
+  ".budgetmanagementsystemform-remove"
+);
+
+const budgetmanagementsystemRhsTable = document.querySelectorAll(
+  ".budgetmanagementsystem-rhs-table"
+);
+
+const budgetTable = [
+  {
+    budgetName: "lorem",
+    budgetAmt: "lorem",
+    amt: "lorem",
+    balanceAmt: "lorem",
+  },
+  {
+    budgetName: "ipsum",
+    budgetAmt: "ipsum",
+    amt: "ipsum",
+    balanceAmt: "ipsum",
+  },
+  {
+    budgetName: "dolor",
+    budgetAmt: "dolor",
+    amt: "dolor",
+    balanceAmt: "dolor",
+  },
+];
+
+//will be removed
+  budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable)
+
+function budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable) {
+  budgetmanagementsystemrhstabletbody.innerHTML = budgetTable
+    .map(
+      (budget) =>
+        `
+      <tr>
+        <td>${budget.budgetName}</td>
+        <td>${budget.budgetAmt}</td>
+        <td>${budget.amt}</td>
+        <td>${budget.balanceAmt}</td>
+        <td>
+          <button
+            class="budgetmanagementsystemform-remove"
+            id="budgetmanagementsystemform-remove"
+          >
+            Remove
+          </button>
+        </td>
+      </tr>
+    `
+    )
+    .join("");
+}
 
 const typesOfBudgets = [
   {
@@ -346,7 +400,7 @@ budgetmanagementsystemformSelectSubject.addEventListener("change", (e) => {
 });
 
 function AmountChangeFun() {
-  amount.addEventListener("change", (e) => {
+  amount.addEventListener("keyup", (e) => {
     if (
       parseInt(amount.value) > 0 &&
       parseInt(amount.value) <= parseInt(remainingAmount.value)
@@ -406,20 +460,26 @@ budgetmanagementsystemformSelectBudget.addEventListener("change", (e) => {
 budgetmanagementsystemform.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const subject = e.target[0].value;
-  const budget = e.target[1].value;
-  const budgetAmt = e.target[2].value;
-  const remainingAmt = e.target[3].value;
-  const amt = e.target[4].value;
-  const balanceAmt = e.target[5].value;
+  const subject = e.target[0];
+  const budgetName = e.target[1];
+  const budgetAmt = e.target[2];
+  const remainingAmt = e.target[3];
+  const amt = e.target[4];
+  const balanceAmt = e.target[5];
 
   budgetTable.push({
-    subject,
-    budget,
-    budgetAmt,
-    remainingAmt,
-    amt,
-    balanceAmt,
+    subject: subject.value,
+    budgetName: budgetName.value,
+    budgetAmt: budgetAmt.value,
+    remainingAmt: remainingAmt.value,
+    amt: amt.value,
+    balanceAmt: balanceAmt.value,
+  });
+
+  const a = typesOfBudgets.filter((budget) => {
+    if (budget.budgetName == budgetName.value) {
+      budget.remainingAmount = balanceAmt.value;
+    }
   });
 
   if (
@@ -430,28 +490,46 @@ budgetmanagementsystemform.addEventListener("submit", (e) => {
     return alert("field should not exmpty");
   }
 
-  budgetmanagementsystemrhstabletbody.innerHTML = budgetTable
-    .map(
-      (budget) =>
-        `
-    <tr>
-      <td>${budget.budget}</td>
-      <td>${budget.budgetAmt}</td>
-      <td>${budget.amt}</td>
-      <td>${budget.balanceAmt}</td>
-      <td>
-        <button
-          class="budgetmanagementsystemform-remove"
-          id="budgetmanagementsystemform-remove"
-        >
-          Remove
-        </button>
-      </td>
-    </tr>
-  `
-    )
-    .join("");
+  budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
+
+  subject.value = "";
+  budgetName.value = "";
+  budgetAmt.value = "";
+  remainingAmt.value = "";
+  amt.value = "";
+  balanceAmt.value = "";
 });
+
+// budgetmanagementsystemformRemove.forEach((remove) => {
+console.log(budgetmanagementsystemRhsTable);
+
+budgetmanagementsystemRhsTable[0].addEventListener("click", (e) => {
+  console.log(e.target.classList.contains("budgetmanagementsystemform-remove"));
+  if (e.target.classList.contains("budgetmanagementsystemform-remove")) {
+    console.log(e);
+    removeBudget(e.target);
+  }
+});
+// });
+
+function removeBudget(remove) {
+  const tr = remove.closest("tr");
+  const trReaminAmt = tr.querySelectorAll("td")[3].textContent;
+
+  const index = budgetTable.findIndex((budget) => {
+    return budget.balanceAmt === trReaminAmt;
+  });
+
+  if (index !== -1) {
+    budgetTable.splice(index, 1);
+  }
+
+  console.log(index);
+
+  budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
+
+  // tr.remove();
+}
 
 // Task Scheduler
 
@@ -465,6 +543,7 @@ const taskSchedulerContainerRhsCardContainer = document.querySelector(
 const taskSchedulerData = [];
 
 taskSchedulerContainerLhsForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   const name = e.target[0];
   const date = e.target[1];
   const prority = e.target[2];
@@ -575,7 +654,7 @@ function showwebpagewithatabledata(products) {
   // });
 }
 
-webpageWithATableContainingDataTopInput.addEventListener("keydown", (e) => {
+webpageWithATableContainingDataTopInput.addEventListener("keyup", (e) => {
   const input = e.target.value.toLowerCase();
 
   const sortedTableData = products.filter((pro) =>
@@ -662,7 +741,7 @@ manageEmployeeRecordsContainerTopForm.addEventListener("submit", (e) => {
 });
 
 manageEmployeeRecordsContainerMiddleInputContainerInput.addEventListener(
-  "keydown",
+  "keyup",
   (e) => {
     const inputValue = e.target.value.toLowerCase();
 
