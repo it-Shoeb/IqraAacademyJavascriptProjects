@@ -372,7 +372,7 @@ function AmountChangeFun() {
       alert(
         "amount should not above or negative (eg -2000 and remaining value is 5000 and you put 1000) this invalid"
       );
-      amount.value = "";
+      amount.value = " ";
     }
   });
 }
@@ -425,15 +425,26 @@ budgetmanagementsystemform.addEventListener("submit", (e) => {
 budgetmanagementsystemRhsTable[0].addEventListener("click", (e) => {
   if (e.target.classList.contains("budgetmanagementsystemform-remove")) {
     const tr = e.target.closest("tr");
+    const trbudgetName = tr.querySelectorAll("td")[0].textContent;
+    const trAmt = tr.querySelectorAll("td")[2].textContent;
     const trReaminAmt = tr.querySelectorAll("td")[3].textContent;
 
     const index = budgetTable.findIndex((budget) => {
       return budget.balanceAmt === trReaminAmt;
     });
 
+    typesOfBudgets.filter((budget) => {
+      if (budget.budgetName === trbudgetName) {
+        budget.remainingAmount =
+          parseInt(budget.remainingAmount) + parseInt(trAmt);
+      }
+    });
+
     if (index !== -1) {
       budgetTable.splice(index, 1);
     }
+
+    console.log(budgetTable);
 
     budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
   }
@@ -485,6 +496,7 @@ function showTaskSchedular(task) {
       (task) =>
         `<div class="card ${task.prority}">
           <p>${task.name}</p>
+          <span>${task.date}</span>
           <div class="taskSchedulerContainerRhsCardContainer-cta">
             <button
               class="taskSchedulerContainerRhsCardContainerCta-edit"
@@ -516,7 +528,10 @@ taskSchedulerContainerRhsCardContainer.addEventListener("click", (e) => {
       "taskSchedulerContainerRhsCardContainerCta-edit"
     )
   ) {
-    const inputValue = prompt("Update Task Name");
+    const inputValue = prompt(
+      "Update Task Name",
+      card.querySelector("p").textContent
+    );
     console.log(inputValue);
 
     taskSchedulerData[index].name = inputValue;
@@ -574,6 +589,11 @@ const webpageWithATableContainingDataTopInput = document.querySelector(
   ".webpageWithATableContainingDataTop-input"
 );
 
+const webpageWithATableContainingDataContainerTableTheadTr =
+  document.querySelector(
+    ".webpageWithATableContainingDataContainerTable-theadTr"
+  );
+
 showwebpagewithatabledata(products);
 
 function showwebpagewithatabledata(products) {
@@ -583,35 +603,22 @@ function showwebpagewithatabledata(products) {
         `
       <tr>
         <td>${product.product}</td>
-        <td>${product.category}</td>
         <td>${product.price}</td>
+        <td>${product.category}</td>
       </tr>
     `
     )
     .join("");
-  // products.forEach((product) => {
-  //   let tr = document.createElement("tr");
-  //   let td1 = document.createElement("td");
-  //   let td2 = document.createElement("td");
-  //   let td3 = document.createElement("td");
-
-  //   td1.textContent = product.product;
-  //   td3.textContent = product.price;
-  //   td2.textContent = product.category;
-
-  //   tr.append(td1);
-  //   tr.append(td2);
-  //   tr.append(td3);
-
-  //   webpageWithATableContainingDataContainerTabletbody.append(tr);
-  // });
 }
 
 webpageWithATableContainingDataTopInput.addEventListener("keyup", (e) => {
   const input = e.target.value.toLowerCase();
 
-  const sortedTableData = products.filter((pro) =>
-    pro.product.toLowerCase().includes(input)
+  const sortedTableData = products.filter(
+    (pro) =>
+      pro.product.toLowerCase().includes(input) ||
+      pro.price.toString().includes(input) ||
+      pro.category.toLowerCase().includes(input)
   );
 
   console.log(sortedTableData);
@@ -619,7 +626,30 @@ webpageWithATableContainingDataTopInput.addEventListener("keyup", (e) => {
   showwebpagewithatabledata(sortedTableData);
 });
 
+webpageWithATableContainingDataContainerTableTheadTr.addEventListener(
+  "click",
+  (e) => {
+    if (e.target.textContent == "Product") {
+      const sorted = products.sort((a, b) =>
+        a.product.localeCompare(b.product)
+      );
+
+      console.log(sorted);
+    }
+
+    if (e.target.textContent == "Price") {
+      console.log("Price");
+    }
+
+    if (e.target.textContent == "Category") {
+      console.log("Category");
+    }
+  }
+);
+
 // manage employee records
+
+// Implement search functionality so users can search for employees by name, age, email, or department.
 
 const manageEmployeeRecordsContainerTopForm = document.querySelector(
   ".manageEmployeeRecordsContainerTop-form"
@@ -752,6 +782,8 @@ manageEmployeeRecordsContainerBottomTableTbody.addEventListener(
 );
 
 // web page that displays a list of items
+
+// Calculate the total number of pages based on the number of items and items per page.
 
 const jsItems = [
   // Keywords

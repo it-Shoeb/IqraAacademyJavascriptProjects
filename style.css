@@ -770,9 +770,6 @@ section.manageEmployeeRecords {
   z-index: 2;
 }
 
-.manageEmployeeRecordsContainerBottom-table tbody tr {
-}
-
 .manageEmployeeRecordsContainerBottomTableTbody-cta {
   display: flex;
   gap: 0.5rem;
@@ -853,9 +850,6 @@ section.webpageThatDisplaysAListOfItems {
   font-weight: bold;
   color: rgb(255, 255, 255);
   cursor: default;
-}
-
-.webpageThatDisplaysAListOfItemsTop-items {
 }
 
 .pagination-bar {
@@ -972,9 +966,6 @@ section.usersCanInputTheirExpenses {
   border-spacing: 1rem;
   background-color: white;
   border-radius: 12px;
-}
-
-.usersCanInputTheirExpensesContainer-bottom {
 }
 
 .usersCanInputTheirExpensesContainer-bottom {
