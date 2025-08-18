@@ -81,27 +81,52 @@ const customerCaptureWebpageForm = document.querySelector(
   ".customerCaptureWebpage-form"
 );
 
+const customerCaptureWebpageNewCustomer = document.getElementById(
+  "customerCaptureWebpage-newCustomer"
+);
+
+const customerCaptureWebpageExistCustomer = document.getElementById(
+  "customerCaptureWebpage-existCustomer"
+);
+
 const NameEl = document.querySelector("#customerCaptureWebpageName");
 const EmailEl = document.querySelector("#customerCaptureWebpageEmail");
 const TypeEl = document.querySelector("#customerCaptureWebpageType");
 const AmountEl = document.querySelector("#customerCaptureWebpageAmount");
 const amountLabel = document.querySelector(".amountLabel");
 
-const customerCaptureWebpageNewCustomer = document.getElementById(
-  "customerCaptureWebpage-newCustomer"
-);
-const customerCaptureWebpageExistCustomer = document.getElementById(
-  "customerCaptureWebpage-existCustomer"
-);
+let customerCaptureWebpageTableDataForNewCustomer = [
+  {
+    name: "lorem",
+    email: "ipsum",
+  },
+  {
+    name: "dolor",
+    email: "sit",
+  },
+  {
+    name: "amet",
+    email: "consectur",
+  },
+];
 
-let customerCaptureWebpageTableDataForNewCustomer = [];
-let customerCaptureWebpageTableDataForExistingCustomer = [];
-
-console.log(
-  NameEl.textContent !== "",
-  EmailEl.textContent !== "",
-  AmountEl.textContent !== ""
-);
+let customerCaptureWebpageTableDataForExistingCustomer = [
+  {
+    name: "adipisicing",
+    email: "Elit",
+    amount: "Modi",
+  },
+  {
+    name: "perferendis",
+    email: "dolorqmque",
+    amount: "repellat",
+  },
+  {
+    name: "eligendi",
+    email: "neque",
+    amount: "earum",
+  },
+];
 
 TypeEl.addEventListener("change", (e) => {
   if (TypeEl.value === "exisitingcustomer") {
@@ -116,168 +141,123 @@ TypeEl.addEventListener("change", (e) => {
 customerCaptureWebpageForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (TypeEl.value === "exisitingcustomer") {
-    if (
-      NameEl.textContent !== "" &&
-      EmailEl.textContent !== "" &&
-      AmountEl.textContent !== ""
-    ) {
-      return alert("Empty Input Field Not Required");
+  if (TypeEl.value === "") {
+    return alert("please select the customer type");
+  }
+
+  if (TypeEl.value === "newcustomer") {
+    if (NameEl.value == "") {
+      return alert("Name must not be empty...");
     }
+    if (EmailEl.value == "") {
+      return alert("Email must not be empty...");
+    }
+
+    customerCaptureWebpageTableDataForNewCustomer.push({
+      [NameEl.name]: NameEl.value,
+      [EmailEl.name]: EmailEl.value,
+      amount: 0,
+    });
+  }
+
+  displayNewCustomer(customerCaptureWebpageTableDataForNewCustomer);
+
+  if (TypeEl.value === "exisitingcustomer") {
+    if (NameEl.value == "") {
+      return alert("Name must not be empty...");
+    }
+    if (EmailEl.value == "") {
+      return alert("Email must not be empty...");
+    }
+    if (AmountEl.value == "") {
+      return alert("Amount must not be empty...");
+    }
+
     customerCaptureWebpageTableDataForExistingCustomer.push({
       [NameEl.name]: NameEl.value,
       [EmailEl.name]: EmailEl.value,
       [AmountEl.name]: AmountEl.value,
     });
 
-    customerCaptureWebpageExistCustomer.innerHTML =
-      customerCaptureWebpageTableDataForExistingCustomer
-        .map(
-          (customer) =>
-            `
-    <tr>
-        <td>${customer.name}</td>
-        <td>${customer.email}</td>
-        <td>${customer.amount}</td>
-        <td>
-        <button class="customerCaptureWebpage-remove">Remove</button>
-        </td>
-        </tr>
-    `
-        )
-        .join("");
-  } else {
-    if (NameEl.textContent !== "" && EmailEl.textContent !== "") {
-      return alert("Empty Input Field Not Required");
-    }
-    customerCaptureWebpageTableDataForNewCustomer.push({
-      [NameEl.name]: NameEl.value,
-      [EmailEl.name]: EmailEl.value,
-    });
+    displayExistingCustomer(customerCaptureWebpageTableDataForExistingCustomer);
+  }
 
-    customerCaptureWebpageNewCustomer.innerHTML =
-      customerCaptureWebpageTableDataForNewCustomer.map(
-        (customer) =>
-          `<tr>
+  NameEl.value = "";
+  EmailEl.value = "";
+  AmountEl.value = "";
+});
+
+customerCaptureWebpageNewCustomer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("customerCaptureWebpage-add")) {
+    const tr = e.target.closest("tr");
+    const currentCustomer = tr.querySelectorAll("td")[0].textContent;
+
+    const index = customerCaptureWebpageTableDataForNewCustomer.findIndex(
+      (customer) => {
+        return customer.name === currentCustomer;
+      }
+    );
+
+    customerCaptureWebpageTableDataForExistingCustomer.push(
+      customerCaptureWebpageTableDataForNewCustomer[index]
+    );
+
+    if (index !== -1) {
+      customerCaptureWebpageTableDataForNewCustomer.splice(index, 1);
+    }
+
+    displayNewCustomer(customerCaptureWebpageTableDataForNewCustomer);
+    displayExistingCustomer(customerCaptureWebpageTableDataForExistingCustomer);
+  }
+});
+
+customerCaptureWebpageExistCustomer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("customerCaptureWebpage-remove")) {
+    const tr = e.target.closest("tr");
+    const exisitingcCstomerName = tr.querySelectorAll("td")[0].textContent;
+
+    const index = customerCaptureWebpageTableDataForExistingCustomer.findIndex(
+      (customer) => {
+        return customer.name === exisitingcCstomerName;
+      }
+    );
+
+    if (index !== -1) {
+      customerCaptureWebpageTableDataForExistingCustomer.splice(index, 1);
+    }
+
+    displayExistingCustomer(customerCaptureWebpageTableDataForExistingCustomer);
+  }
+});
+
+function displayNewCustomer(newCustomer) {
+  customerCaptureWebpageNewCustomer.innerHTML = newCustomer.map(
+    (customer) =>
+      `<tr>
           <td>${customer.name}</td>
           <td>${customer.email}</td>
           <td>
             <button class="customerCaptureWebpage-add">Add</button>
           </td>
         </tr>`
-      );
-  }
-
-  NameEl.value = "";
-  EmailEl.value = "";
-  AmountEl.value = "";
-
-  const customerCaptureWebpageAdd = document.querySelectorAll(
-    ".customerCaptureWebpage-add"
   );
-  // if (customerCaptureWebpageTableDataForNewCustomer.length) {
-  customerCaptureWebpageAdd.forEach((add) => {
-    add.addEventListener("click", (e) => {
-      const tableRow = add.closest("tr");
-      const tableData = tableRow.querySelectorAll("td");
+}
 
-      const name = tableData[0].textContent;
-      const email = tableData[1].textContent;
-      const amount = 0;
-
-      const filterDate = customerCaptureWebpageTableDataForNewCustomer.filter(
-        (customer, index) => {
-          if (customer.name == name) {
-            console.log("customer", customer, "index", index);
-
-            customerCaptureWebpageTableDataForNewCustomer.splice(index, 1);
-
-            customerCaptureWebpageNewCustomer.innerHTML =
-              customerCaptureWebpageTableDataForNewCustomer.map(
-                (customer) =>
-                  `<tr>
-                        <td>${customer.name}</td>
-                        <td>${customer.email}</td>
-                        <td>
-                          <button class="customerCaptureWebpage-add">Add</button>
-                        </td>
-                      </tr>`
-              );
-          }
-        }
-      );
-
-      customerCaptureWebpageTableDataForExistingCustomer.push({
-        name,
-        email,
-        amount,
-      });
-
-      customerCaptureWebpageExistCustomer.innerHTML =
-        customerCaptureWebpageTableDataForExistingCustomer.map(
-          (customer) =>
-            `
-            <tr>
-                <td>${customer.name}</td>
-                <td>${customer.email}</td>
-                <td>${customer.amount}</td>
-                <td>
-                  <button class="customerCaptureWebpage-remove">Remove</button>
-                </td>
-            </tr>
-            `
-        );
-
-      const customerCaptureWebpageRemove = document.querySelectorAll(
-        ".customerCaptureWebpage-remove"
-      );
-
-      // if (customerCaptureWebpageTableDataForExistingCustomer.length > 0) {
-      customerCaptureWebpageRemove.forEach((remove) => {
-        remove.addEventListener("click", (e) => {
-          const tableRow = remove.closest("tr");
-          const tableData = tableRow.querySelectorAll("td");
-
-          console.log(tableRow, tableData);
-          const email = tableData[1].textContent;
-
-          const filterdData =
-            customerCaptureWebpageTableDataForExistingCustomer.filter(
-              (customer, index) => {
-                if (customer.email == email) {
-                  console.log(customer.email == email, customer.email, email);
-
-                  return customerCaptureWebpageTableDataForExistingCustomer.splice(
-                    index,
-                    1
-                  );
-                }
-              }
-            );
-
-          console.log(customerCaptureWebpageTableDataForExistingCustomer);
-
-          customerCaptureWebpageExistCustomer.innerHTML =
-            customerCaptureWebpageTableDataForExistingCustomer.map(
-              (customer) =>
-                `
-              <tr>
-                  <td>${customer.name}</td>
-                  <td>${customer.email}</td>
-                  <td>${customer.amount}</td>
-                  <td>
-                    <button class="customerCaptureWebpage-remove">Remove</button>
-                  </td>
-              </tr>
-              `
-            );
-        });
-      });
-      // }
-    });
-  });
-  // }
-});
+function displayExistingCustomer(exisitingcustomer) {
+  customerCaptureWebpageExistCustomer.innerHTML = exisitingcustomer.map(
+    (customer) =>
+      `
+        <tr>
+            <td>${customer.name}</td>
+            <td>${customer.email}</td>
+            <td>${customer.amount}</td>
+            <td>
+              <button class="customerCaptureWebpage-remove">Remove</button>
+            </td>
+        </tr>
+        `
+  );
+}
 
 // budget management system
 
@@ -336,7 +316,7 @@ const budgetTable = [
 ];
 
 //will be removed
-  budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable)
+budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
 
 function budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable) {
   budgetmanagementsystemrhstabletbody.innerHTML = budgetTable
