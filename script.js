@@ -95,38 +95,9 @@ const TypeEl = document.querySelector("#customerCaptureWebpageType");
 const AmountEl = document.querySelector("#customerCaptureWebpageAmount");
 const amountLabel = document.querySelector(".amountLabel");
 
-let customerCaptureWebpageTableDataForNewCustomer = [
-  {
-    name: "lorem",
-    email: "ipsum",
-  },
-  {
-    name: "dolor",
-    email: "sit",
-  },
-  {
-    name: "amet",
-    email: "consectur",
-  },
-];
+let customerCaptureWebpageTableDataForNewCustomer = [];
 
-let customerCaptureWebpageTableDataForExistingCustomer = [
-  {
-    name: "adipisicing",
-    email: "Elit",
-    amount: "Modi",
-  },
-  {
-    name: "perferendis",
-    email: "dolorqmque",
-    amount: "repellat",
-  },
-  {
-    name: "eligendi",
-    email: "neque",
-    amount: "earum",
-  },
-];
+let customerCaptureWebpageTableDataForExistingCustomer = [];
 
 TypeEl.addEventListener("change", (e) => {
   if (TypeEl.value === "exisitingcustomer") {
@@ -295,29 +266,7 @@ const budgetmanagementsystemRhsTable = document.querySelectorAll(
   ".budgetmanagementsystem-rhs-table"
 );
 
-const budgetTable = [
-  {
-    budgetName: "lorem",
-    budgetAmt: "lorem",
-    amt: "lorem",
-    balanceAmt: "lorem",
-  },
-  {
-    budgetName: "ipsum",
-    budgetAmt: "ipsum",
-    amt: "ipsum",
-    balanceAmt: "ipsum",
-  },
-  {
-    budgetName: "dolor",
-    budgetAmt: "dolor",
-    amt: "dolor",
-    balanceAmt: "dolor",
-  },
-];
-
-//will be removed
-budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
+const budgetTable = [];
 
 function budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable) {
   budgetmanagementsystemrhstabletbody.innerHTML = budgetTable
@@ -507,15 +456,27 @@ taskSchedulerContainerLhsForm.addEventListener("submit", (e) => {
   const date = e.target[1];
   const prority = e.target[2];
 
+  if (name.value == "") {
+    return alert("name must not be empty");
+  }
+  if (date.value == "") {
+    return alert("date must not be empty");
+  }
+  if (prority.value == "") {
+    return alert("prority must not be empty");
+  }
+
   taskSchedulerData.push({
     name: name.value,
     date: date.value,
     prority: prority.value,
   });
 
-  console.log(taskSchedulerData);
-
   showTaskSchedular(taskSchedulerData);
+
+  name.value = "";
+  date.value = "";
+  prority.value = "";
 });
 
 function showTaskSchedular(task) {
@@ -540,6 +501,38 @@ function showTaskSchedular(task) {
     )
     .join("");
 }
+
+taskSchedulerContainerRhsCardContainer.addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  const taskName = card.querySelector("p").textContent;
+
+  const index = taskSchedulerData.findIndex((task) => {
+    console.log(task.name === taskName, task.name, taskName);
+    return task.name === taskName;
+  });
+
+  if (
+    e.target.classList.contains(
+      "taskSchedulerContainerRhsCardContainerCta-edit"
+    )
+  ) {
+    const inputValue = prompt("Update Task Name");
+    console.log(inputValue);
+
+    taskSchedulerData[index].name = inputValue;
+    showTaskSchedular(taskSchedulerData);
+  }
+  if (
+    e.target.classList.contains(
+      "taskSchedulerContainerRhsCardContainerCta-dele"
+    )
+  ) {
+    if (index !== -1) {
+      taskSchedulerData.splice(index, 1);
+    }
+    showTaskSchedular(taskSchedulerData);
+  }
+});
 
 // web page with a table containing data
 
@@ -582,6 +575,7 @@ const webpageWithATableContainingDataTopInput = document.querySelector(
 );
 
 showwebpagewithatabledata(products);
+
 function showwebpagewithatabledata(products) {
   webpageWithATableContainingDataContainerTabletbody.innerHTML = products
     .map(
@@ -625,8 +619,6 @@ webpageWithATableContainingDataTopInput.addEventListener("keyup", (e) => {
   showwebpagewithatabledata(sortedTableData);
 });
 
-showwebpagewithatabledata(products);
-
 // manage employee records
 
 const manageEmployeeRecordsContainerTopForm = document.querySelector(
@@ -642,39 +634,20 @@ const manageEmployeeRecordsContainerMiddleInputContainerInput =
     ".manageEmployeeRecordsContainerMiddleInputContainer-input"
   );
 
-const employeeData = [
-  {
-    employeeName: "Lorem ipsum dolor",
-    employeeAage: "adipisicing elit. Similique",
-    employeeEmail: "sit amet consectetur",
-    employeeDepartment: "tenetur repellat, nemo",
-  },
-  {
-    employeeName: "quia, culpa velit",
-    employeeAage: "doloribus numquam mollitia",
-    employeeEmail: "itaque hic consequatur atque",
-    employeeDepartment: "quisquam, beatae corrupti",
-  },
+const employeeName = document.querySelector(
+  ".manageEmployeeRecordsContainerTopForm-name"
+);
+const employeeAge = document.querySelector(
+  ".manageEmployeeRecordsContainerTopForm-age"
+);
+const employeeEmail = document.querySelector(
+  ".manageEmployeeRecordsContainerTopForm-email"
+);
+const employeeDepartment = document.querySelector(
+  ".manageEmployeeRecordsContainerTopForm-department"
+);
 
-  {
-    employeeName: "nobis? Aliquid ipsam",
-    employeeAage: "esse porro.",
-    employeeEmail: "ipsum dolor, sit",
-    employeeDepartment: "amet consectetur adipisicing",
-  },
-  {
-    employeeName: "elit. Similique tenetur",
-    employeeAage: "repellat, nemo quia",
-    employeeEmail: "culpa velit doloribus",
-    employeeDepartment: "numquam mollitia itaque",
-  },
-  {
-    employeeName: "hic consequatur atque",
-    employeeAage: "quisquam, beatae corrupti",
-    employeeEmail: "nobis? Aliquid",
-    employeeDepartment: "ipsam esse porro.",
-  },
-];
+const employeeData = [];
 
 manageEmployeeRecordsContainerTopForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -683,6 +656,8 @@ manageEmployeeRecordsContainerTopForm.addEventListener("submit", (e) => {
   const employeeAage = e.target[1];
   const employeeEmail = e.target[2];
   const employeeDepartment = e.target[3];
+
+  console.log(employeeName, employeeAage, employeeEmail, employeeDepartment);
 
   employeeData.push({
     employeeName: employeeName.value,
@@ -714,6 +689,7 @@ manageEmployeeRecordsContainerMiddleInputContainerInput.addEventListener(
 );
 
 showEmployeeData(employeeData);
+
 function showEmployeeData(employeeData) {
   manageEmployeeRecordsContainerBottomTableTbody.innerHTML = employeeData
     .map(
@@ -727,14 +703,54 @@ function showEmployeeData(employeeData) {
           <td
             class="manageEmployeeRecordsContainerBottomTableTbody-cta"
           >
-            <button>Edit</button>
-            <button>Dele</button>
+            <button class="manageEmployeeRecordsContainerBottomTableTbodyCta-Edit">Edit</button>
+            <button class="manageEmployeeRecordsContainerBottomTableTbodyCta-Dele">Dele</button>
           </td>
         </tr>
         `
     )
     .join("");
 }
+
+manageEmployeeRecordsContainerBottomTableTbody.addEventListener(
+  "click",
+  (e) => {
+    const tr = e.target.closest("tr");
+    const currentemployeeName = tr.querySelectorAll("td")[0].textContent;
+
+    const index = employeeData.findIndex((employee) => {
+      return employee.employeeName === currentemployeeName;
+    });
+
+    if (
+      e.target.classList.contains(
+        "manageEmployeeRecordsContainerBottomTableTbodyCta-Edit"
+      )
+    ) {
+      console.log(e.target.classList.contains);
+
+      const employee = employeeData[index];
+
+      employeeName.value = employee.employeeName;
+      employeeAge.value = employee.employeeAage;
+      employeeEmail.value = employee.employeeEmail;
+      employeeDepartment.value = employee.employeeDepartment;
+    }
+
+    if (
+      e.target.classList.contains(
+        "manageEmployeeRecordsContainerBottomTableTbodyCta-Dele"
+      )
+    ) {
+      console.log("manageEmployeeRecordsContainerBottomTableTbodyCta-Dele");
+      if (index !== -1) {
+        employeeData.splice(index, 1);
+      }
+      showEmployeeData(employeeData);
+    }
+  }
+);
+
 // web page that displays a list of items
 
 const jsItems = [
@@ -749,25 +765,103 @@ const jsItems = [
   "default",
   "delete",
   "do",
-  // "else", "enum", "export", "extends", "false", "finally", "for", "function", "if",
-  // "import", "in", "instanceof", "let", "new", "null", "return", "super", "switch", "this",
-  // "throw", "true", "try", "typeof", "var", "void", "while", "with", "yield",
+  "else",
+  "enum",
+  "export",
+  "extends",
+  "false",
+  "finally",
+  "for",
+  "function",
+  "if",
+  "import",
+  "in",
+  "instanceof",
+  "let",
+  "new",
+  "null",
+  "return",
+  "super",
+  "switch",
+  "this",
+  "throw",
+  "true",
+  "try",
+  "typeof",
+  "var",
+  "void",
+  "while",
+  "with",
+  "yield",
 
   // Built-in Objects
-  // "Array", "Boolean", "Date", "Error", "Function", "JSON", "Map", "Math", "Number", "Object",
-  // "Promise", "RegExp", "Set", "String", "Symbol", "WeakMap", "WeakSet", "BigInt", "Reflect",
+  "Array",
+  "Boolean",
+  "Date",
+  "Error",
+  "Function",
+  "JSON",
+  "Map",
+  "Math",
+  "Number",
+  "Object",
+  "Promise",
+  "RegExp",
+  "Set",
+  "String",
+  "Symbol",
+  "WeakMap",
+  "WeakSet",
+  "BigInt",
+  "Reflect",
 
-  // // Global Functions
-  // "decodeURI", "decodeURIComponent", "encodeURI", "encodeURIComponent", "eval", "isFinite",
-  // "isNaN", "parseFloat", "parseInt", "alert", "prompt", "confirm", "setTimeout", "setInterval",
+  // Global Functions
+  "decodeURI",
+  "decodeURIComponent",
+  "encodeURI",
+  "encodeURIComponent",
+  "eval",
+  "isFinite",
+  "isNaN",
+  "parseFloat",
+  "parseInt",
+  "alert",
+  "prompt",
+  "confirm",
+  "setTimeout",
+  "setInterval",
 
-  // // Browser APIs
-  // "document", "window", "navigator", "history", "localStorage", "sessionStorage",
-  // "fetch", "XMLHttpRequest", "addEventListener", "removeEventListener",
+  // Browser APIs
+  "document",
+  "window",
+  "navigator",
+  "history",
+  "localStorage",
+  "sessionStorage",
+  "fetch",
+  "XMLHttpRequest",
+  "addEventListener",
+  "removeEventListener",
 
-  // // Popular Frameworks & Libraries
-  // "React", "Vue", "Angular", "Svelte", "Next.js", "Nuxt.js", "jQuery", "Lodash", "D3.js", "Three.js",
-  // "Express", "Node.js", "NestJS", "Socket.io", "Chart.js", "TailwindCSS", "Bootstrap", "Moment.js"
+  // Popular Frameworks & Libraries
+  "React",
+  "Vue",
+  "Angular",
+  "Svelte",
+  "Next.js",
+  "Nuxt.js",
+  "jQuery",
+  "Lodash",
+  "D3.js",
+  "Three.js",
+  "Express",
+  "Node.js",
+  "NestJS",
+  "Socket.io",
+  "Chart.js",
+  "TailwindCSS",
+  "Bootstrap",
+  "Moment.js",
 ];
 
 const webpageThatDisplaysAListOfItemsBottomPrev = document.querySelector(
@@ -781,10 +875,16 @@ const webpageThatDisplaysAListOfItemsTopItems = document.querySelector(
   ".webpageThatDisplaysAListOfItemsTop-items"
 );
 
+const paginationBarNumberBar = document.querySelector(
+  ".paginationBar-numberBar"
+);
+
+const btns = paginationBarNumberBar.querySelectorAll("button");
+
 let totalItems = jsItems.length;
-let perPage = 1;
+let perPage = 10;
 let pageNo = 1;
-let totalPages = jsItems.length / perPage;
+let totalPages = Math.ceil(jsItems.length / perPage);
 
 // console.log(jsItems.slice(startingIndex, endingIndex));
 
@@ -794,35 +894,42 @@ function paginationMethod(pageNo, perPage) {
   let startingIndex = (pageNo - 1) * perPage;
   let endingIndex = startingIndex + perPage;
 
-  jsItems.slice(startingIndex, endingIndex).forEach((item, index) => {
-    // const li = document.createElement("li");
-    // li.textContent = `${index + 1}: ${item.toUpperCase()}`;
-    // // webpageThatDisplaysAListOfItemsTopItems.append(li);
-    webpageThatDisplaysAListOfItemsTopItems.innerHTML = `
-      <li>${item.toUpperCase()}</li>
-    `;
-  });
+  const toShowItemList = jsItems.slice(startingIndex, endingIndex);
+
+  webpageThatDisplaysAListOfItemsTopItems.innerHTML = toShowItemList
+    .map(
+      (item) =>
+        `
+        <li>${item.toUpperCase()}</li>  
+      `
+    )
+    .join("");
 }
 
 webpageThatDisplaysAListOfItemsBottomNext.addEventListener("click", (e) => {
-  if (pageNo <= totalPages) {
+  console.log(pageNo < totalPages, pageNo, totalPages);
+
+  if (pageNo < totalPages) {
     pageNo += 1;
-    paginationMethod(pageNo, 1);
-    console.log(totalPages, pageNo);
-  } else {
-    // webpageThatDisplaysAListOfItemsBottomNext.style.disabled;
+    paginationMethod(pageNo, perPage);
   }
 });
 
 webpageThatDisplaysAListOfItemsBottomPrev.addEventListener("click", (e) => {
   // webpageThatDisplaysAListOfItemsBottomPrev.setAttribute('disabled');
-  if (pageNo > 0) {
+  console.log(pageNo < totalPages, pageNo, totalPages);
+
+  if (pageNo > 1) {
     pageNo -= 1;
-    paginationMethod(pageNo, 1);
-  } else {
-    webpageThatDisplaysAListOfItemsBottomPrev.disabled;
+    paginationMethod(pageNo, perPage);
   }
-  console.log(totalPages, pageNo);
+});
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", (button) => {
+    console.log(button.target.textContent);
+    paginationMethod(button.target.textContent, 10);
+  });
 });
 
 // users can input their expenses

@@ -58,7 +58,7 @@
             <input
               type="text"
               name=""
-              id=""
+              id="otpInputField"
               class="otpInputField"
               maxlength="4"
             />
@@ -122,8 +122,7 @@
                     <th>Add</th>
                   </tr>
                 </thead>
-                <tbody id="customerCaptureWebpage-newCustomer">
-                </tbody>
+                <tbody id="customerCaptureWebpage-newCustomer"></tbody>
               </table>
             </div>
 
@@ -138,14 +137,12 @@
                     <th>Remove</th>
                   </tr>
                 </thead>
-                <tbody id="customerCaptureWebpage-existCustomer">
-                </tbody>
+                <tbody id="customerCaptureWebpage-existCustomer"></tbody>
               </table>
             </div>
           </div>
         </div>
       </section>
-
 
       <section id="budgetmanagementsystem" class="budgetmanagementsystem">
         <div class="container">
@@ -153,7 +150,7 @@
             <form action="" class="budgetmanagementsystem-form">
               <select
                 name=""
-                id=""
+                id="budgetmanagementsystemform-selectSubject"
                 class="budgetmanagementsystemform-selectSubject"
               >
                 <option value="">Select Subject</option>
@@ -167,11 +164,10 @@
 
               <select
                 name=""
-                id=""
+                id="budgetmanagementsystemform-selectBudget"
                 class="budgetmanagementsystemform-selectBudget"
               >
                 <option value="">Select Budget</option>
-                
               </select>
 
               <input
@@ -215,22 +211,7 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody class="budgetmanagementsystemrhstable-tbody">
-                <tr>
-                  <td>Subject</td>
-                  <td>Budget</td>
-                  <td>Amount</td>
-                  <td>Balance</td>
-                  <td>
-                    <button
-                      class="budgetmanagementsystemform-remove"
-                      id="budgetmanagementsystemform-remove"
-                    >
-                      Remove
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody class="budgetmanagementsystemrhstable-tbody"></tbody>
             </table>
           </div>
         </div>
@@ -238,12 +219,12 @@
 
       <section id="taskScheduler" class="taskScheduler">
         <div class="container">
-          <p class="heading">Task Scheduler</h1>
+          <p class="heading">Task Scheduler</p>
           <div class="taskSchedulerContainer-lhs">
             <form action="" class="taskSchedulerContainerLhs-form">
               <input type="text" placeholder="Enter Task Name" />
               <input type="date" name="" id="" />
-              <select name="" id="">
+              <select name="" id="taskSchedulerContainerLhsForm-select">
                 <option value="">Priority</option>
                 <option value="yellow">Low</option>
                 <option value="orange">Medium</option>
@@ -254,38 +235,7 @@
             </form>
           </div>
           <div class="taskSchedulerContainer-rhs">
-            <div class="taskSchedulerContainerRhs-cardContainer">
-              <div class="card">
-                <p>task Name</p>
-                <div class="taskSchedulerContainerRhsCardContainer-cta">
-                  <button
-                    class="taskSchedulerContainerRhsCardContainerCta-edit"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    class="taskSchedulerContainerRhsCardContainerCta-dele"
-                  >
-                    Dele
-                  </button>
-                </div>
-              </div>
-              <div class="card">
-                <p>task Name</p>
-                <div class="taskSchedulerContainerRhsCardContainer-cta">
-                  <button
-                    class="taskSchedulerContainerRhsCardContainerCta-edit"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    class="taskSchedulerContainerRhsCardContainerCta-dele"
-                  >
-                    Dele
-                  </button>
-                </div>
-              </div>
-            </div>
+            <div class="taskSchedulerContainerRhs-cardContainer"></div>
           </div>
         </div>
       </section>
@@ -294,12 +244,16 @@
         id="webpageWithATableContainingData"
         class="webpageWithATableContainingData"
       >
-
-      
-      <div class="container">
-          <p class="webpageWithATableContainingData-heading heading">Sortable & Filterable Table</p>
+        <div class="container">
+          <p class="webpageWithATableContainingData-heading heading">
+            Sortable & Filterable Table
+          </p>
           <div class="webpageWithATableContainingData-top">
-            <input type="text" placeholder="Enter Product Name" class="webpageWithATableContainingDataTop-input"/>
+            <input
+              type="text"
+              placeholder="Enter Product Name"
+              class="webpageWithATableContainingDataTop-input"
+            />
           </div>
 
           <div class="webpageWithATableContainingData-bottom">
@@ -333,10 +287,26 @@
 
           <div class="manageEmployeeRecordsContainer-top">
             <form action="" class="manageEmployeeRecordsContainerTop-form">
-              <input type="text" placeholder="Enter Employee Name" />
-              <input type="number" placeholder="Enter Employee Age" />
-              <input type="email" placeholder="Enter Employee Email" />
-              <input type="text" placeholder="Enter Employee Department" />
+              <input
+                class="manageEmployeeRecordsContainerTopForm-name"
+                type="text"
+                placeholder="Enter Employee Name"
+              />
+              <input
+                class="manageEmployeeRecordsContainerTopForm-age"
+                type="number"
+                placeholder="Enter Employee Age"
+              />
+              <input
+                class="manageEmployeeRecordsContainerTopForm-email"
+                type="email"
+                placeholder="Enter Employee Email"
+              />
+              <input
+                class="manageEmployeeRecordsContainerTopForm-department"
+                type="text"
+                placeholder="Enter Employee Department"
+              />
               <input type="submit" value="Add Employee" />
             </form>
           </div>
@@ -344,39 +314,50 @@
           <div class="manageEmployeeRecordsContainer-middle">
             <p class="subheading">Search Employye</p>
             <div class="manageEmployeeRecordsContainerMiddle-inputContainer">
-              <input type="text" placeholder="Enter Employee Name ... " class="manageEmployeeRecordsContainerMiddleInputContainer-input" />
+              <input
+                type="text"
+                placeholder="Enter Employee Name ... "
+                class="manageEmployeeRecordsContainerMiddleInputContainer-input"
+              />
             </div>
           </div>
           <div class="manageEmployeeRecordsContainer-bottom">
             <p class="subheading">Employyes List</p>
             <div class="manageEmployeeRecordsContainerBottom-tableContainer">
-            <table class="manageEmployeeRecordsContainerBottom-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Age</th>
-                  <th>Department</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody class="manageEmployeeRecordsContainerBottomTable-tbody">
-                <tr>
-                  <td>Name</td>
-                  <td>Email</td>
-                  <td>Age</td>
-                  <td>Department</td>
-                  <td
-                    class="manageEmployeeRecordsContainerBottomTableTbody-cta"
-                  >
-                    <button>Edit</button>
-                    <button>Dele</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              <table class="manageEmployeeRecordsContainerBottom-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody class="manageEmployeeRecordsContainerBottomTable-tbody">
+                  <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Age</td>
+                    <td>Department</td>
+                    <td
+                      class="manageEmployeeRecordsContainerBottomTableTbody-cta"
+                    >
+                      <button
+                        class="manageEmployeeRecordsContainerBottomTableTbodyCta-Edit"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="manageEmployeeRecordsContainerBottomTableTbodyCta-Dele"
+                      >
+                        Dele
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-
           </div>
         </div>
       </section>
@@ -394,14 +375,18 @@
 
           <div class="webpageThatDisplaysAListOfItems-bottom">
             <div class="pagination-bar">
-              <button class="webpageThatDisplaysAListOfItemsBottom-prev">&leftarrow; Prev</button>
+              <button class="webpageThatDisplaysAListOfItemsBottom-prev">
+                &leftarrow; Prev
+              </button>
               <div class="paginationBar-numberBar">
                 <button>1</button><button>2</button><button>3</button
                 ><button>4</button><button>5</button><button>6</button
                 ><button>7</button><button>8</button><button>9</button
                 ><button>10</button>
               </div>
-              <button class="webpageThatDisplaysAListOfItemsBottom-next">Next &RightArrow;</button>
+              <button class="webpageThatDisplaysAListOfItemsBottom-next">
+                Next &RightArrow;
+              </button>
             </div>
           </div>
         </div>
@@ -432,15 +417,20 @@
                   <th>Description</th>
                 </tr>
               </thead>
-                <tbody class="usersCanInputTheirExpensesContainerMiddleTable-tbody">
-                </tbody>
+              <tbody
+                class="usersCanInputTheirExpensesContainerMiddleTable-tbody"
+              ></tbody>
             </table>
           </div>
 
           <div class="usersCanInputTheirExpensesContainer-bottom">
             <p class="subheading">Summary</p>
-            <div class="usersCanInputTheirExpensesContainerBottom-summaryContainer">
-              <p class="usersCanInputTheirExpensesContainerBottomSummaryContainer-summary">
+            <div
+              class="usersCanInputTheirExpensesContainerBottom-summaryContainer"
+            >
+              <p
+                class="usersCanInputTheirExpensesContainerBottomSummaryContainer-summary"
+              >
                 Overall Expense are 0000
               </p>
             </div>
@@ -476,10 +466,19 @@
                 email is field is required, it not be empty
               </p>
             </label>
-            <select name="" id="" class="registrationForm-country">
+            <select
+              name=""
+              id="registrationForm-country"
+              class="registrationForm-country"
+            >
               <option value="">Select Country</option>
             </select>
-            <input class="registrationForm-currency" type="text" disabled />
+            <input
+              class="registrationForm-currency"
+              type="text"
+              disabled
+              placeholder="Currency"
+            />
             <input type="submit" value="Register" />
           </form>
         </div>

@@ -392,6 +392,11 @@ section.budgetmanagementsystem {
   flex-wrap: wrap;
   gap: 2rem;
 }
+.budgetmanagementsystem-lhs,
+.budgetmanagementsystem-rhs,
+.budgetmanagementsystem-rhs-table {
+  width: 100%;
+}
 
 .budgetmanagementsystem .container div {
   flex: 1;
@@ -402,6 +407,7 @@ section.budgetmanagementsystem {
   flex-wrap: wrap;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
 }
 
 .budgetmanagementsystem-form input,
@@ -427,11 +433,6 @@ section.budgetmanagementsystem {
   color: black;
 }
 
-.budgetmanagementsystem-rhs-table {
-  width: 100%;
-  border-spacing: 0.5rem;
-}
-
 .budgetmanagementsystem-rhs-table th {
   text-align: left;
 }
@@ -454,9 +455,8 @@ section.budgetmanagementsystem {
 @media (max-width: 720px) {
   .budgetmanagementsystem .container {
     width: 100%;
-  }
-  .budgetmanagementsystem .container {
     flex-direction: column;
+    padding: 1rem;
   }
 }
 
@@ -856,9 +856,6 @@ section.webpageThatDisplaysAListOfItems {
 }
 
 .webpageThatDisplaysAListOfItemsTop-items {
-}
-
-.webpageThatDisplaysAListOfItems bottom {
 }
 
 .pagination-bar {
