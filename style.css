@@ -428,11 +428,27 @@ section.budgetmanagementsystem {
 }
 
 .budgetmanagementsystem-rhs-table {
-  border: solid;
   width: 100%;
+  border-spacing: 0.5rem;
 }
+
 .budgetmanagementsystem-rhs-table th {
   text-align: left;
+}
+.budgetmanagementsystem-rhs-table td {
+  border: solid 1px;
+  text-align: center;
+}
+
+.budgetmanagementsystem-rhs-table td:last-child {
+  background-color: black;
+}
+.budgetmanagementsystem-rhs-table td button {
+  background-color: black;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 0.5rem;
 }
 
 @media (max-width: 720px) {
@@ -454,7 +470,7 @@ section.taskScheduler {
 
 .taskScheduler .container {
   background-color: #ffffffaa;
-  width: 45%;
+  width: 50%;
   padding: 1rem;
   border-radius: 12px;
   display: flex;
@@ -482,7 +498,7 @@ section.taskScheduler {
 .taskSchedulerContainerLhs-form {
   display: flex;
   flex-wrap: wrap;
-  /* gap: .5rem; */
+  /* gap: .1rem ; */
   justify-content: space-between;
 }
 
@@ -516,7 +532,6 @@ section.taskScheduler {
 .taskSchedulerContainer-rhs {
   max-height: 50vh;
   overflow-y: auto;
-  padding: 0.5rem 1rem;
 }
 
 .taskSchedulerContainer-rhs::-webkit-scrollbar {

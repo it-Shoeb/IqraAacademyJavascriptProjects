@@ -278,6 +278,7 @@ const remainingAmount = document.querySelector(
   ".budgetmanagementsystemform-remainingAmount"
 );
 const amount = document.querySelector(".budgetmanagementsystemform-amount");
+
 const balanceAmount = document.querySelector(
   ".budgetmanagementsystemform-balanceAmount"
 );
@@ -368,38 +369,16 @@ budgetmanagementsystemformSelectSubject.addEventListener("change", (e) => {
       <option value="Hardware Update">Hardware Update</option>
       <option value="Offshore Support">Offshore Support</option>`;
   } else {
-    // budgetmanagementsystemformSelectBudget.innerHTML = `
-    //       <option value="">Select Budget</option>
-    // `;
     budgetmanagementsystemformSelectBudget.innerHTML = `
-        <option value="">Select Budget</option>
-        <option value="Microsoft 365 License">Microsoft 365 License</option>
-        <option value="Hardware Update">Hardware Update</option>
-        <option value="Offshore Support">Offshore Support</option>`;
+        <option value="">Select Budget</option>`;
   }
 });
-
-function AmountChangeFun() {
-  amount.addEventListener("keyup", (e) => {
-    if (
-      parseInt(amount.value) > 0 &&
-      parseInt(amount.value) <= parseInt(remainingAmount.value)
-    ) {
-      balanceAmount.value = remainingAmount.value - amount.value;
-    } else {
-      console.log(
-        "amount should not above and negative (eg -2000 and remaining value is 5000 and you 1000) this invalid"
-      );
-    }
-  });
-}
 
 budgetmanagementsystemformSelectBudget.addEventListener("change", (e) => {
   amount.value = NaN;
   balanceAmount.value = "";
-  if (budgetmanagementsystemformSelectBudget.value == "Microsoft 365 License") {
-    console.log("Microsoft 365 License");
 
+  if (budgetmanagementsystemformSelectBudget.value == "Microsoft 365 License") {
     const [SelectedBudget] = typesOfBudgets.filter((budget) => {
       return budget.budgetName == "Microsoft 365 License";
     });
@@ -411,8 +390,6 @@ budgetmanagementsystemformSelectBudget.addEventListener("change", (e) => {
   } else if (
     budgetmanagementsystemformSelectBudget.value == "Hardware Update"
   ) {
-    console.log("Hardware Update");
-
     const [SelectedBudget] = typesOfBudgets.filter((budget) => {
       return budget.budgetName == "Hardware Update";
     });
@@ -424,8 +401,6 @@ budgetmanagementsystemformSelectBudget.addEventListener("change", (e) => {
   } else if (
     budgetmanagementsystemformSelectBudget.value == "Offshore Support"
   ) {
-    console.log("Offshore Support");
-
     const [SelectedBudget] = typesOfBudgets.filter((budget) => {
       return budget.budgetName == "Offshore Support";
     });
@@ -437,6 +412,22 @@ budgetmanagementsystemformSelectBudget.addEventListener("change", (e) => {
   }
 });
 
+function AmountChangeFun() {
+  amount.addEventListener("keyup", (e) => {
+    if (
+      parseInt(amount.value) > 0 &&
+      parseInt(amount.value) <= parseInt(remainingAmount.value)
+    ) {
+      balanceAmount.value = remainingAmount.value - amount.value;
+    } else {
+      alert(
+        "amount should not above or negative (eg -2000 and remaining value is 5000 and you put 1000) this invalid"
+      );
+      amount.value = "";
+    }
+  });
+}
+
 budgetmanagementsystemform.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -447,6 +438,16 @@ budgetmanagementsystemform.addEventListener("submit", (e) => {
   const amt = e.target[4];
   const balanceAmt = e.target[5];
 
+  if (subject.value == "") {
+    return alert("subject must not be empty");
+  }
+  if (budgetName.value == "") {
+    return alert("budgetName must not be empty");
+  }
+  if (amt.value == "") {
+    return alert("amt must not be empty");
+  }
+
   budgetTable.push({
     subject: subject.value,
     budgetName: budgetName.value,
@@ -456,19 +457,11 @@ budgetmanagementsystemform.addEventListener("submit", (e) => {
     balanceAmt: balanceAmt.value,
   });
 
-  const a = typesOfBudgets.filter((budget) => {
+  typesOfBudgets.filter((budget) => {
     if (budget.budgetName == budgetName.value) {
       budget.remainingAmount = balanceAmt.value;
     }
   });
-
-  if (
-    !amount.value &&
-    budgetmanagementsystemformSelectSubject.value == " " &&
-    budgetmanagementsystemformSelectBudget.value == " "
-  ) {
-    return alert("field should not exmpty");
-  }
 
   budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
 
@@ -480,36 +473,22 @@ budgetmanagementsystemform.addEventListener("submit", (e) => {
   balanceAmt.value = "";
 });
 
-// budgetmanagementsystemformRemove.forEach((remove) => {
-console.log(budgetmanagementsystemRhsTable);
-
 budgetmanagementsystemRhsTable[0].addEventListener("click", (e) => {
-  console.log(e.target.classList.contains("budgetmanagementsystemform-remove"));
   if (e.target.classList.contains("budgetmanagementsystemform-remove")) {
-    console.log(e);
-    removeBudget(e.target);
+    const tr = e.target.closest("tr");
+    const trReaminAmt = tr.querySelectorAll("td")[3].textContent;
+
+    const index = budgetTable.findIndex((budget) => {
+      return budget.balanceAmt === trReaminAmt;
+    });
+
+    if (index !== -1) {
+      budgetTable.splice(index, 1);
+    }
+
+    budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
   }
 });
-// });
-
-function removeBudget(remove) {
-  const tr = remove.closest("tr");
-  const trReaminAmt = tr.querySelectorAll("td")[3].textContent;
-
-  const index = budgetTable.findIndex((budget) => {
-    return budget.balanceAmt === trReaminAmt;
-  });
-
-  if (index !== -1) {
-    budgetTable.splice(index, 1);
-  }
-
-  console.log(index);
-
-  budgetmanagementsystemrhstabletbodyInnerHtml(budgetTable);
-
-  // tr.remove();
-}
 
 // Task Scheduler
 
