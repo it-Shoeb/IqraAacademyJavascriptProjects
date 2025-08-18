@@ -202,22 +202,25 @@ customerCaptureWebpageExistCustomer.addEventListener("click", (e) => {
 });
 
 function displayNewCustomer(newCustomer) {
-  customerCaptureWebpageNewCustomer.innerHTML = newCustomer.map(
-    (customer) =>
-      `<tr>
+  customerCaptureWebpageNewCustomer.innerHTML = newCustomer
+    .map(
+      (customer) =>
+        `<tr>
           <td>${customer.name}</td>
           <td>${customer.email}</td>
           <td>
             <button class="customerCaptureWebpage-add">Add</button>
           </td>
         </tr>`
-  );
+    )
+    .join("");
 }
 
 function displayExistingCustomer(exisitingcustomer) {
-  customerCaptureWebpageExistCustomer.innerHTML = exisitingcustomer.map(
-    (customer) =>
-      `
+  customerCaptureWebpageExistCustomer.innerHTML = exisitingcustomer
+    .map(
+      (customer) =>
+        `
         <tr>
             <td>${customer.name}</td>
             <td>${customer.email}</td>
@@ -227,7 +230,8 @@ function displayExistingCustomer(exisitingcustomer) {
             </td>
         </tr>
         `
-  );
+    )
+    .join("");
 }
 
 // budget management system
@@ -552,30 +556,30 @@ taskSchedulerContainerRhsCardContainer.addEventListener("click", (e) => {
 // web page with a table containing data
 
 const products = [
-  { product: "Apple iPhone 15 Pro", price: 999, category: "Electronics" },
-  { product: "Nike Air Zoom Pegasus 40", price: 125, category: "Footwear" },
-  { product: 'Samsung 55" 4K Smart TV', price: 549, category: "Electronics" },
-  { product: "Levi's 501 Original Jeans", price: 69, category: "Clothing" },
+  { product: "Apple iPhone 15 Pro", price: "999", category: "Electronics" },
+  { product: "Nike Air Zoom Pegasus 40", price: "125", category: "Footwear" },
+  { product: 'Samsung 55" 4K Smart TV', price: "549", category: "Electronics" },
+  { product: "Levi's 501 Original Jeans", price: "69", category: "Clothing" },
   {
     product: "Dyson V15 Detect Vacuum Cleaner",
-    price: 699,
+    price: "699",
     category: "Home Appliances",
   },
-  { product: "KitchenAid Stand Mixer", price: 379, category: "Kitchen" },
+  { product: "KitchenAid Stand Mixer", price: "379", category: "Kitchen" },
   {
     product: "ASUS ROG Strix Gaming Laptop",
-    price: 1499,
+    price: "1499",
     category: "Computers",
   },
   {
     product: "Ray-Ban Aviator Sunglasses",
-    price: 179,
+    price: "179",
     category: "Accessories",
   },
-  { product: "Adidas Essentials Hoodie", price: 55, category: "Clothing" },
+  { product: "Adidas Essentials Hoodie", price: "55", category: "Clothing" },
   {
     product: "Fitbit Charge 6 Fitness Tracker",
-    price: 149,
+    price: "149",
     category: "Wearables",
   },
 ];
@@ -629,23 +633,44 @@ webpageWithATableContainingDataTopInput.addEventListener("keyup", (e) => {
 webpageWithATableContainingDataContainerTableTheadTr.addEventListener(
   "click",
   (e) => {
-    if (e.target.textContent == "Product") {
-      const sorted = products.sort((a, b) =>
-        a.product.localeCompare(b.product)
-      );
-
-      console.log(sorted);
+    let sorted;
+    if (e.target.textContent == "Product ⇅") {
+      if (e.target.classList.contains("ascending")) {
+        e.target.classList.remove("ascending");
+        sorted = products.sort((a, b) => a.product.localeCompare(b.product));
+      } else {
+        e.target.classList.add("ascending");
+        sorted = products.sort((a, b) => b.product.localeCompare(a.product));
+      }
     }
 
-    if (e.target.textContent == "Price") {
+    if (e.target.textContent == "Price ⇅") {
       console.log("Price");
+      if (e.target.classList.contains("ascending")) {
+        e.target.classList.remove("ascending");
+        sorted = products.sort((a, b) => a.price.localeCompare(b.price));
+      } else {
+        e.target.classList.add("ascending");
+        sorted = products.sort((a, b) => b.price.localeCompare(a.price));
+      }
     }
 
-    if (e.target.textContent == "Category") {
-      console.log("Category");
+    if (e.target.textContent == "Category ⇅") {
+      if (e.target.classList.contains("ascending")) {
+        e.target.classList.remove("ascending");
+        sorted = products.sort((a, b) => a.category.localeCompare(b.category));
+      } else {
+        e.target.classList.add("ascending");
+        sorted = products.sort((a, b) => b.category.localeCompare(a.category));
+      }
     }
+
+    console.log(sorted);
+    showwebpagewithatabledata(sorted);
   }
 );
+
+function sortingFunc() {}
 
 // manage employee records
 
@@ -670,11 +695,15 @@ const employeeName = document.querySelector(
 const employeeAge = document.querySelector(
   ".manageEmployeeRecordsContainerTopForm-age"
 );
-const employeeEmail = document.querySelector(
+const employeeEmailEl = document.querySelector(
   ".manageEmployeeRecordsContainerTopForm-email"
 );
 const employeeDepartment = document.querySelector(
   ".manageEmployeeRecordsContainerTopForm-department"
+);
+
+const manageEmployeeRecordsContainerTopFormSubmit = document.querySelector(
+  ".manageEmployeeRecordsContainerTopForm-submit"
 );
 
 const employeeData = [];
@@ -687,14 +716,30 @@ manageEmployeeRecordsContainerTopForm.addEventListener("submit", (e) => {
   const employeeEmail = e.target[2];
   const employeeDepartment = e.target[3];
 
-  console.log(employeeName, employeeAage, employeeEmail, employeeDepartment);
+  // console.log(employeeName, employeeAage, employeeEmail, employeeDepartment);
 
-  employeeData.push({
-    employeeName: employeeName.value,
-    employeeAage: employeeAage.value,
-    employeeEmail: employeeEmail.value,
-    employeeDepartment: employeeDepartment.value,
-  });
+  // employeeEmailEl.disabled = "false";
+
+  if (manageEmployeeRecordsContainerTopFormSubmit.value === "Add Employee") {
+    employeeData.push({
+      employeeName: employeeName.value,
+      employeeAage: employeeAage.value,
+      employeeEmail: employeeEmail.value,
+      employeeDepartment: employeeDepartment.value,
+    });
+  } else {
+    const index = employeeData.findIndex((employee) => {
+      return employee.employeeEmail == employeeEmail.value;
+    });
+
+    employeeData[index].employeeName = employeeName.value;
+    employeeData[index].employeeAage = employeeAage.value;
+    // employeeData[index].employeeEmail = employeeEmail.value;
+    employeeData[index].employeeDepartment = employeeDepartment.value;
+
+    employeeEmailEl.disabled = false;
+    manageEmployeeRecordsContainerTopFormSubmit.value = "Add Employee";
+  }
 
   showEmployeeData(employeeData);
 
@@ -759,11 +804,14 @@ manageEmployeeRecordsContainerBottomTableTbody.addEventListener(
     ) {
       console.log(e.target.classList.contains);
 
+      manageEmployeeRecordsContainerTopFormSubmit.value = "Edit Employee";
+      employeeEmailEl.disabled = true;
+
       const employee = employeeData[index];
 
       employeeName.value = employee.employeeName;
       employeeAge.value = employee.employeeAage;
-      employeeEmail.value = employee.employeeEmail;
+      employeeEmailEl.value = employee.employeeEmail;
       employeeDepartment.value = employee.employeeDepartment;
     }
 
@@ -911,14 +959,29 @@ const paginationBarNumberBar = document.querySelector(
   ".paginationBar-numberBar"
 );
 
-const btns = paginationBarNumberBar.querySelectorAll("button");
-
 let totalItems = jsItems.length;
 let perPage = 10;
 let pageNo = 1;
-let totalPages = Math.ceil(jsItems.length / perPage);
+let totalPages = Math.floor(jsItems.length / perPage);
 
 // console.log(jsItems.slice(startingIndex, endingIndex));
+
+let button = [];
+
+for (i = 1; i <= totalPages; i++) {
+  button.push(i);
+}
+
+console.log(button);
+
+paginationBarNumberBar.innerHTML = button
+  .map(
+    (btn) =>
+      `
+    <button>${btn}</button>
+    `
+  )
+  .join();
 
 paginationMethod(pageNo, perPage);
 
@@ -939,8 +1002,8 @@ function paginationMethod(pageNo, perPage) {
 }
 
 webpageThatDisplaysAListOfItemsBottomNext.addEventListener("click", (e) => {
-  console.log(pageNo < totalPages, pageNo, totalPages);
-
+  console.log(pageNo, totalPages);
+  
   if (pageNo < totalPages) {
     pageNo += 1;
     paginationMethod(pageNo, perPage);
@@ -948,20 +1011,17 @@ webpageThatDisplaysAListOfItemsBottomNext.addEventListener("click", (e) => {
 });
 
 webpageThatDisplaysAListOfItemsBottomPrev.addEventListener("click", (e) => {
-  // webpageThatDisplaysAListOfItemsBottomPrev.setAttribute('disabled');
-  console.log(pageNo < totalPages, pageNo, totalPages);
-
   if (pageNo > 1) {
     pageNo -= 1;
     paginationMethod(pageNo, perPage);
   }
 });
 
-btns.forEach((btn) => {
-  btn.addEventListener("click", (button) => {
-    console.log(button.target.textContent);
-    paginationMethod(button.target.textContent, 10);
-  });
+paginationBarNumberBar.addEventListener("click", (e) => {
+  const btns = e.target;
+
+  pageNo = btns.textContent;
+  paginationMethod(btns.textContent, 10);
 });
 
 // users can input their expenses

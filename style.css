@@ -649,6 +649,9 @@ section.webpageWithATableContainingData {
   top: 0;
   z-index: 2;
 }
+.webpageWithATableContainingDataContainer-table thead tr th {
+  cursor: pointer;
+}
 
 /* .webpageWithATableContainingDataContainer-table tbody { */
 /* width: 10%; */
